@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react()],
      // vite.config.js
    
-     base: 'home',
+     base: '/',
      // ...other config
 })
