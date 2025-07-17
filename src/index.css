@@ -1,0 +1,53 @@
+::-webkit-scrollbar{
+    width: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: var(--primary-color);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-track{  
+    /* background-color: var(--secondary-color); */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color: var(--tertiary-color);
+}
+::-webkit-scrollbar:horizontal {
+  height: 0px; /* Hide horizontal scrollbar */
+}
+:root{
+    --primary-color: #ff4c4c;
+    --secondary-color: #eb2525;
+    --tertiary-color: #3e3e3e;
+    --white-Black-color: #ffff;
+    --quinary-color: #f5f5f5;
+    --senary-color: #222;
+    --septenary-color: #4f8cff;
+    --octonary-color: #2563eb;
+    --text-color: #fff;
+}
+.Dark-theme{
+    --primary-color: #ff4c4c;
+    --secondary-color: #eb2525;
+    --tertiary-color: #3e3e3e;
+    --white-Black-color: #ffff;
+    --quinary-color: #f5f5f5;
+    --senary-color: #222;
+    --septenary-color: #4f8cff;
+    --octonary-color: #2563eb;
+    --text-color: #000000;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+/* html{
+    scroll-padding-top: 70px;
+} */
