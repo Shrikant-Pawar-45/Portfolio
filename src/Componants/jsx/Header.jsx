@@ -20,7 +20,7 @@ const Header = () => {
     <header className={isBlur ? "header-blur" : "header-transparent"}>
       <div className="header-left">
         <span className="header-logo">{'<'}</span>
-        <label style={{color: 'white', fontSize: '1.5rem', fontWeight: 'bold'}}>Shrikant</label>
+        <a href="/" style={{textDecoration: 'none', color: 'white'}}><label style={{color: 'white', fontSize: '1.5rem', fontWeight: 'bold'}}>Shrikant</label></a>
         <span className="header-logo">{'/>'}</span>
       </div>
       <nav>
