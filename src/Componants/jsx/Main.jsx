@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import about from '../../assets/images/2025-03-06 22.27.06[1].jpg';
 import ClickSpark from '../../../ClickSpark/ClickSpark.jsx';
+import ShinyText from '../../../ClickSpark/ShinyText/ShinyText.jsx';
 import * as Icon from "react-bootstrap-icons";
 import '../css/Main.css';
 import ProjectModal from './ProjectModel.jsx';
@@ -101,13 +102,47 @@ export default function Main() {
   );
 
   const Internships = () => (
-    <section id="Internships">
-      <div className="section--container">
-        <div className="section--tittle">
-          <h2><b style={{color: 'var(--text-color)'}}>Professional</b> Experience</h2>
-        </div>
+    <section id='Internships' className="experience-section">
+  <h2><b style={{color: 'var(--text-color)'}}>Professional</b> Experience</h2>
+
+  <p className="experience-subtitle">
+    My professional experience and growth in the tech industry. 
+  </p>
+  <div className="timeline-container">
+    <div className="experience-card">
+      <div className="company">
+        <span role="img" aria-label="briefcase">💼</span> Innovate Corp
       </div>
-    </section>
+      <div className="role">Software Engineer Intern</div>
+      <div className="meta">
+        <span>📅 Jun 2022 - Aug 2022</span>
+        <span>🌐 Remote</span>
+      </div>
+      <div className="description">
+        Worked on the core platform, contributing to both front-end and back-end services. Developed new features, fixed bugs, and participated in the full...
+      </div>
+      <a className="details-btn" href="#"><ShinyText text="View Details ↗" disabled={false} speed={3} className='custom-class' /></a>
+    </div>
+    <div className="timeline">
+      <div className="timeline-dot"></div>
+      <div className="timeline-dot timeline-dot-2"></div>
+    </div>
+    <div className="experience-card experience-card-2">
+      <div className="company">
+        <span role="img" aria-label="briefcase">💼</span> Innovate Corp
+      </div>
+      <div className="role">Software Engineer Intern</div>
+      <div className="meta">
+        <span>📅 Jun 2022 - Aug 2022</span>
+        <span>🌐 Remote</span>
+      </div>
+      <div className="description">
+        Worked on the core platform, contributing to both front-end and back-end services. Developed new features, fixed bugs, and participated in the full...
+      </div>
+      <a className="details-btn" href="#"><ShinyText text="View Details ↗" disabled={false} speed={3} className='custom-class' /></a>
+    </div>
+  </div>
+</section>
   );
 
   const Education = () => (

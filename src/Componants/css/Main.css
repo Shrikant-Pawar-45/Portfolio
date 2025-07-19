@@ -158,6 +158,7 @@ section p{
   color: #bdbdbd;
   font-size: 1rem;
   margin-bottom: 1.2rem;
+  text-align: justify;
 }
 
 .project-btn {
@@ -265,6 +266,150 @@ section p{
   flex-direction: column;
   align-items: center;
 }
+
+.experience-section {
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.experience-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.experience-title .highlight {
+  color: #4f8cff;
+}
+
+.experience-subtitle {
+  color: #bdbdbd;
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+}
+
+.timeline-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  margin-top: 2rem;
+}
+
+.timeline {
+  width: 2px;
+  background: #303030;
+  height: 550px;
+  margin: 0 40px;
+  position: relative;
+  top: 10px;
+}
+
+.timeline-dot {
+  width: 18px;
+  height: 18px;
+  background: #181818;
+  border: 3px solid #fff701;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  transform: translate(-50%, -50%);
+  /* box-shadow: 0 0 12px #4f8cff88; */
+}
+.timeline-dot-2{
+  border: 3px solid #30fe07;
+  top: 75%;
+}
+
+.experience-card {
+  background: #040404;
+  color: #fff;
+  border-radius: 16px;
+  padding: 1.2rem 1.5rem;      /* Reduced padding */
+  min-width: 220px;            /* Reduced min-width */
+  max-width: 60vh;            /* Reduced max-width */
+  margin: 0 0 2rem 0;
+  text-align: left;
+  border: 1.5px solid #404040;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.experience-card-2{
+  background: #040404;
+  color: #fff;
+  border-radius: 16px;
+  padding: 1.2rem 1.5rem;      /* Reduced padding */
+  min-width: 220px;            /* Reduced min-width */
+  max-width: 60vh;            /* Reduced max-width */
+  margin: 0 0 2rem 0;
+  text-align: left;
+  border: 1.5px solid #404040;
+  transition: box-shadow 0.2s, border-color 0.2s;
+  transform: translateY(300px);
+}
+.experience-card:hover {
+  box-shadow: 0 8px 32px #ff4c4c44, 0 0 24px #4f8cff33;
+  border-color: #ff4c4c;
+}
+
+.experience-card .company {
+  color: #4f8cff;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.experience-card .role {
+  font-size: 1.1rem;
+  text-align: left;
+  padding-left: 2px;
+  margin-bottom: 10px;
+}
+
+.experience-card .company,
+.experience-card .meta,
+.experience-card .description {
+  font-size: 0.95rem;
+}
+
+.experience-card .meta {
+  color: #bdbdbd;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.experience-card .description {
+  color: #bdbdbd;
+  font-size: 1rem;
+  text-align: justify;
+  margin-bottom: 1.2rem;
+}
+
+.experience-card .details-btn {
+    color: #5185ff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s, box-shadow 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+}
+
 
 @media (max-width: 1024px) {
     .section--container {
