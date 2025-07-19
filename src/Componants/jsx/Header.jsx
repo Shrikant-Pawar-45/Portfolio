@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import * as Icon from "react-bootstrap-icons"
 import "./../css/Header.css";
 
 const Header = () => {
@@ -19,8 +20,8 @@ const Header = () => {
   return (
     <header className={isBlur ? "header-blur" : "header-transparent"}>
       <div className="header-left">
-        <span className="header-logo">{'<'}</span>
-        <label style={{color: 'white', fontSize: '1.5rem', fontWeight: 'bold'}}>Shrikant</label>
+        <span className="header-logo" id="home">{'<'}</span>
+        <a href="/" style={{textDecoration: 'none', color: 'white'}}><label style={{color: 'white', fontSize: '1.5rem', fontWeight: 'bold'}}>Shrikant</label></a>
         <span className="header-logo">{'/>'}</span>
       </div>
       <nav>
@@ -31,16 +32,18 @@ const Header = () => {
           <li><a href="#Education">Education</a></li>
           <li><a href="#Certifications">Certifications</a></li>
           <li><a href="#Contact">Contact</a></li>
-          <li className="theme-dropdown">
-            <span className="theme-toggle" title="Toggle dark mode">&#x1F319;</span>
+          
+        </ul>
+        
+      </nav>
+      <li className="theme-dropdown">
+            <span className="theme-toggle" title="Toggle dark mode"><Icon.SunFill /></span>
             <ul className="theme-menu">
               <li>Light</li>
               <li>Dark</li>
               <li>System</li>
             </ul>
           </li>
-        </ul>
-      </nav>
       <button
         className="hamburger"
         onClick={() => setMenuOpen(!menuOpen)}
