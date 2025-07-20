@@ -28,6 +28,10 @@
     --octonary-color: #2563eb;
     --text-color: #fff;
     --blueviolet-color: #8a2be2;
+    --card-color: rgba(0, 0, 0, 0.85);
+    --border-color: #404040;
+    --white-color: #fff;
+    --black-color: #000;
 }
 .Dark-theme{
     --primary-color: #ff4c4c;

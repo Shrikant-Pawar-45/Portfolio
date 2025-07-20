@@ -20,7 +20,7 @@ function App() {
         sparkCount={8}
         duration={400}
       >
-        <div className="red-grid-bg"></div>
+      
         <Header />
         <div className="hero-section-container">
         <div className="hero-section hero-animate">
@@ -30,13 +30,17 @@ function App() {
             <h2 className="hero-subtitle"><ShinyText text="Full Stack Developer & AI Enthusiast" disabled={false} speed={3} className='custom-class' /></h2>
             <div className="hero-buttons">
             
-            <button className='download-btn'>Download CV</button>
+            <button className='download-btnl' onClick={() => {
+              window.open('https://drive.google.com/file/d/1-0000000000000000000000000000000000000000/view?usp=sharing', '_blank');
+            }}>Download CV</button>
             
-            <button className="contact-btn">Contact Me</button>
+            <button className="contact-btnl" onClick={() => {
+              window.open('mailto:shrikantpawar493@gmail.com', '_blank');
+            }}>Contact Me</button>
             </div>
             <div className="hero-icons">
-              <Icon.Github style={{color: 'white', fontSize: '20px'}}/>
-              <Icon.Linkedin style={{color: 'white', fontSize: '20px'}}/>
+              <a href="https://github.com/Shrikant-Pawar-45" target='_blank'><Icon.Github style={{color: 'white', fontSize: '20px'}}/></a>
+              <a href="https://www.linkedin.com/in/shrikant-pawar-89200823b/" target='_blank'><Icon.Linkedin style={{color: 'white', fontSize: '20px'}}/></a>
             </div>
           </div>
           
