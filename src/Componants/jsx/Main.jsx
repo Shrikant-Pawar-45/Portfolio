@@ -3,7 +3,7 @@ import ClickSpark from '../../../ClickSpark/ClickSpark.jsx';
 import ShinyText from '../../../ClickSpark/ShinyText/ShinyText.jsx';
 import * as Icons from 'react-bootstrap-icons';
 import '../css/Main.css';
-import ProjectModal from './ProjectModel.jsx';
+import '../../index.css';
 import ProjectCard from './ProjectCard.jsx';
 
 export default function Main() {
@@ -377,13 +377,27 @@ export default function Main() {
         sparkCount={8}
         duration={400}
       >
+        {/* <div className='red-grid-bg-1'> */}
         <About />
+        {/* </div> */}
+        <div className='red-grid-bg-2'>
         <Projects />
+        </div>
+        {/* <div className='red-grid-bg-3'> */}
         <Internships />
+        {/* </div> */}
+        <div className='red-grid-bg-4'>
         <Skills />
+        </div>
+        {/* <div className='red-grid-bg-5'> */}
         <Education />
+        {/* </div> */}
+        {/* <div className='red-grid-bg-6'> */}
         <Certifications />
+        {/* </div> */}
+        <div className='red-grid-bg-7'>
         <Contact />
+        </div>
       </ClickSpark>
   );
 }

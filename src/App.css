@@ -1,13 +1,5 @@
-.red-grid-bg {
-  background-color: #1c1c1c;
-  background-image:
-    linear-gradient(to right, rgba(51, 51, 51, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(37, 37, 37, 0.08) 1px, transparent 1px);
-  background-size: 15px 15px;
-}
-
-body {
-  background-color: #000000; /* dark gray base */
+ .red-grid-bg {
+  background-color: #000000; 
   background-image:
     radial-gradient(circle at 35% 20%, rgba(255,76,76,0.10) 0%, rgba(255,76,76,0.04) 20%, rgba(0,0,0,0) 35%),
     linear-gradient(to right, rgba(36, 36, 36, 0.491) 1px, transparent 1px),
@@ -15,6 +7,17 @@ body {
   background-size: 150vw 150vh, 15px 40px, 15px 40px;
   background-repeat: no-repeat, repeat, repeat;
 }
+
+body {
+  background-color: #000000; 
+  background-image:
+    radial-gradient(circle at 35% 20%, rgba(255,76,76,0.10) 0%, rgba(255,76,76,0.04) 20%, rgba(0,0,0,0) 35%),
+    linear-gradient(to right, rgba(36, 36, 36, 0.491) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(30, 30, 30, 0.479) 1px, transparent 1px);
+  background-size: 150vw 150vh, 15px 40px, 15px 40px;
+  background-repeat: no-repeat, repeat, repeat;
+} 
+
 .hero-section {
   display: flex;
   align-items: center;
@@ -249,5 +252,15 @@ body {
 @keyframes mouse-bounce {
   0%, 100% { transform: translateY(0);}
   50% { transform: translateY(16px);}
+}
+
+.ripple-grid-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
 }
 

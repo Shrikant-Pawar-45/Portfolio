@@ -1,0 +1,21 @@
+.red-glow-spots {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .red-glow {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ff4c4c88 0%, #ff4c4c22 60%, transparent 100%);
+    filter: blur(32px);
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.4s;
+  }
