@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../css/Main.css';
 
 export default function ProjectCard({ image, title, description, link}) {
   return (
@@ -12,4 +13,3 @@ export default function ProjectCard({ image, title, description, link}) {
     </div>
   );
 }
-

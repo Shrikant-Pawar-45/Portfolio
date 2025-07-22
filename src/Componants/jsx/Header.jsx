@@ -1,17 +1,68 @@
 import React, { useEffect, useState } from "react";
-import * as Icon from "react-bootstrap-icons"
+import * as Icon from "react-bootstrap-icons";
 import "./../css/Header.css";
+
+const getSystemTheme = () =>
+  window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+
+const ThemeToggle = () => {
+  const [theme, setTheme] = useState(() =>
+    localStorage.getItem("theme") || "light"
+  );
+
+  useEffect(() => {
+    let appliedTheme = theme;
+    if (theme === "system") {
+      appliedTheme = getSystemTheme();
+    }
+    if (appliedTheme === "dark") {
+      document.body.classList.add("Dark-theme");
+    } else {
+      document.body.classList.remove("Dark-theme");
+    }
+    if (appliedTheme === "light") {
+      document.body.classList.add("Light-theme");
+    } else {
+      document.body.classList.remove("Light-theme");
+    }
+    localStorage.setItem("theme", theme);
+
+    // Listen for system theme changes if 'system' is selected
+    if (theme === "system") {
+      const listener = (e) => {
+        if (e.matches) {
+          document.body.classList.add("Dark-theme");
+        } else {
+          document.body.classList.remove("Dark-theme");
+        }
+      };
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", listener);
+      return () =>
+        window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", listener);
+    }
+  }, [theme]);
+
+  return (
+    <li className="theme-dropdown">
+      <span className="theme-toggle" title="Toggle dark mode">
+        {theme === "dark" || (theme === "system" && getSystemTheme() === "dark") ? <Icon.SunFill /> : <Icon.MoonFill />}
+      </span>
+      <ul className="theme-menu">
+        <li onClick={() => setTheme("light")}>Light</li>
+        <li onClick={() => setTheme("dark")}>Dark</li>
+        <li onClick={() => setTheme("system")}>System</li>
+      </ul>
+    </li>
+  );
+};
 
 const Header = () => {
   const [isBlur, setIsBlur] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsBlur(true);
-      } else {
-        setIsBlur(false);
-      }
+      setIsBlur(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -20,9 +71,9 @@ const Header = () => {
   return (
     <header className={isBlur ? "header-blur" : "header-transparent"}>
       <div className="header-left">
-        <span className="header-logo" id="home">{'<'}</span>
-        <a href="/" style={{textDecoration: 'none', color: 'white'}}><label style={{color: 'white', fontSize: '1.5rem', fontWeight: 'bold'}}>Shrikant</label></a>
-        <span className="header-logo">{'/>'}</span>
+        <span className="header-logo" id="home">{'<'} <a href="#" style={{textDecoration: 'none', color: 'var(--black-white-color)'}}>
+          <label style={{color: 'var(--black-white-color)', fontSize: '1.5rem', fontWeight: 'bold'}}>
+            Shrikant </label></a>{'/>'}</span>
       </div>
       <nav>
         <ul>
@@ -34,16 +85,8 @@ const Header = () => {
           <li><a href="#Contact">Contact</a></li>
           
         </ul>
-        
       </nav>
-      <li className="theme-dropdown">
-            <span className="theme-toggle" title="Toggle dark mode"><Icon.SunFill /></span>
-            <ul className="theme-menu">
-              <li>Light</li>
-              <li>Dark</li>
-              <li>System</li>
-            </ul>
-          </li>
+      <ThemeToggle />
       <button
         className="hamburger"
         onClick={() => setMenuOpen(!menuOpen)}

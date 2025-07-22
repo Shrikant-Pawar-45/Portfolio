@@ -1,11 +1,11 @@
 .footer {
   width: 100%;
-  background: var(--card-color);
+  background: var(--Card-Background-color);
   border-top: 2px solid var(--border-color);
   color: var(--text-color);
   padding: 1.2rem 0 0.7rem 0;
   margin-top: 2rem;
-  box-shadow: 0 -2px 16px 0 #4f8cff11;
+  box-shadow: var(--box-shadow);
   position: relative;
   z-index: 2;
 }
@@ -35,12 +35,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(40,44,52,0.7);
+  background: var(--Card-Background-color);
   border-radius: 50%;
   width: 38px;
   height: 38px;
   transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-  box-shadow: 0 2px 8px 0 #4f8cff22;
+  box-shadow: var(--box-shadow);
   border: 1.5px solid var(--border-color);
 }
 

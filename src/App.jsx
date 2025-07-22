@@ -39,8 +39,8 @@ function App() {
               }}>Contact Me</button>
               </div>
               <div className="hero-icons">
-                <a href="https://github.com/Shrikant-Pawar-45" target='_blank'><Icon.Github style={{color: 'white', fontSize: '20px'}}/></a>
-                <a href="https://www.linkedin.com/in/shrikant-pawar-89200823b/" target='_blank'><Icon.Linkedin style={{color: 'white', fontSize: '20px'}}/></a>
+                <a href="https://github.com/Shrikant-Pawar-45" target='_blank'><Icon.Github style={{color: 'var(--black-white-color)', fontSize: '20px'}}/></a>
+                <a href="https://www.linkedin.com/in/shrikant-pawar-89200823b/" target='_blank'><Icon.Linkedin style={{color: 'var(--black-white-color)', fontSize: '20px'}}/></a>
               </div>
             </div>
             
@@ -59,10 +59,10 @@ function App() {
     <div className="mouse-shape">
       <div className="mouse-arrow">
         <svg width="28" height="48" viewBox="0 0 28 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="2" width="24" height="44" rx="12" stroke="white" strokeWidth="4" fill="none"/>
+          <rect x="2" y="2" width="24" height="44" rx="12" stroke="var(--black-white-color)" strokeWidth="4" fill="none"/>
           <g>
-            <line x1="14" y1="16" x2="14" y2="30" stroke="white" strokeWidth="4" strokeLinecap="round"/>
-            <polygon points="14,38 8,30 20,30" fill="white"/>
+            <line x1="14" y1="16" x2="14" y2="30" stroke="var(--black-white-color)" strokeWidth="4" strokeLinecap="round"/>
+            <polygon points="14,38 8,30 20,30" fill="var(--black-white-color)"/>
           </g>
         </svg>
       </div>

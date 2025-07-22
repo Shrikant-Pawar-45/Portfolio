@@ -16,9 +16,9 @@ section{
     font-size: 2rem;
 }
 .section--content{
-  background: var(--card-color);
+  background: var(--Card-Background-color);
     display: inline-block;
-    border: 2px solid #404040;
+    border: 2px solid var(--border-color);
     border-radius: 10px;
     padding: 50px;
     width: 70%;
@@ -26,13 +26,14 @@ section{
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
+    box-shadow: var(--box-shadow);
     transition: 
     transform 0.9s cubic-bezier(.4,2,.6,1),
     box-shadow 0.9s cubic-bezier(.4,2,.6,1),
     border-color 0.4s;
 }
 .section--content:hover{
-  border: 2px solid #ff5f5f;
+  border-color: #ff4c4c;
   border-radius: 10px;
   transform: scale(1.0);
   box-shadow:
@@ -83,6 +84,7 @@ section p{
     font-size: 1.2rem;
     font-weight: 400;
     margin-bottom: 20px;
+    color: var(--text-color);
 }
 .projects-section {
   display: flex;
@@ -96,7 +98,7 @@ section p{
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #fff;
+  color: var(--text-color);
   letter-spacing: 1px;
 }
 
@@ -105,7 +107,7 @@ section p{
 }
 
 .projects-subtitle {
-  color: #bdbdbd;
+  color: var(--subtitle-color);
   font-size: 1.1rem;
   margin-bottom: 2.5rem;
 }
@@ -118,9 +120,9 @@ section p{
 }
 
 .project-card {
-  background: var(--card-color);
+  background: var(--Card-Background-color);
   border-radius: 12px;
-  /* box-shadow: 0 2px 24px 0 rgba(23, 23, 23, 0.1), 0 0 32px 0 rgba(255, 76, 76, 0.10); */
+  box-shadow: var(--box-shadow);
   padding: 1.5rem;
   width: 340px;
   display: flex;
@@ -140,7 +142,7 @@ section p{
   width: 100%;
   border-radius: 8px;
   margin-bottom: 1.2rem;
-  box-shadow: 0 2px 16px 0 #4f8cff22;
+  box-shadow: var(--card-Btn-shadow);
 }
 
 .project-title {
@@ -148,19 +150,19 @@ section p{
   font-weight: 700;
   margin-bottom: 0.5rem;
   text-align: center;
-  color: #fff;
+  color: var(--text-color);
 }
 
 .project-description {
-  color: #bdbdbd;
+  color: var(--text-color);
   font-size: 1rem;
   margin-bottom: 1.2rem;
   text-align: justify;
 }
 
 .project-btn {
-  background: #181818;
-  color: #fff;
+  background: var(--card-Btn-color);
+  color: var(--text-color);
   padding: 0.7rem 2rem;
   border-radius: 8px;
   text-decoration: none;
@@ -172,7 +174,7 @@ section p{
   text-align: center;
   justify-content: center;
   gap: 0.5rem;
-  box-shadow: 0 2px 8px 0 #4f8cff22;
+  box-shadow: var(--card-Btn-shadow);
   border: none;
 }
 
@@ -263,7 +265,6 @@ section p{
   flex-direction: column;
   align-items: center;
 }
-
 .experience-section {
   justify-content: flex-start;
   align-items: center;
@@ -287,7 +288,7 @@ section p{
 }
 
 .experience-subtitle {
-  color: #bdbdbd;
+  color: var(--subtitle-color);
   font-size: 1.1rem;
   margin-bottom: 2.5rem;
 }
@@ -302,7 +303,7 @@ section p{
 
 .timeline {
   width: 2px;
-  background: #303030;
+  background: var(--timeline-color);
   height: 550px;
   margin: 0 40px;
   position: relative;
@@ -312,7 +313,7 @@ section p{
 .timeline-dot {
   width: 18px;
   height: 18px;
-  background: #181818;
+  background: var(--Card-Background-color);
   border: 3px solid #fff701;
   border-radius: 50%;
   position: absolute;
@@ -327,28 +328,30 @@ section p{
 }
 
 .experience-card {
-  background: var(--card-color);
-  color: #fff;
+  background: var(--Card-Background-color);
+  color: var(--text-color);
   border-radius: 16px;
   padding: 1.2rem 1.5rem;      /* Reduced padding */
   min-width: 220px;            /* Reduced min-width */
   max-width: 60vh;            /* Reduced max-width */
   margin: 0 0 2rem 0;
   text-align: left;
+  box-shadow: var(--Card-Background-shadow);
   border: 1.5px solid var(--border-color);
   transition: box-shadow 0.2s, border-color 0.2s;
 }
 
 .experience-card-2{
-  background: var(--card-color);
-  color: #fff;
+  background: var(--Card-Background-color);
+  color: var(--text-color);
   border-radius: 16px;
   padding: 1.2rem 1.5rem;      /* Reduced padding */
   min-width: 220px;            /* Reduced min-width */
   max-width: 60vh;            /* Reduced max-width */
   margin: 0 0 2rem 0;
   text-align: left;
-  border: 1.5px solid #404040;
+  box-shadow: var(--Card-Background-shadow);
+  border: 1.5px solid var(--border-color);
   transition: box-shadow 0.2s, border-color 0.2s;
   transform: translateY(300px);
 }
@@ -381,7 +384,7 @@ section p{
 }
 
 .experience-card .meta {
-  color: #bdbdbd;
+  color: var(--experienx-meta-color);
   font-size: 1rem;
   margin-bottom: 1rem;
   display: flex;
@@ -390,7 +393,7 @@ section p{
 }
 
 .experience-card .description {
-  color: #bdbdbd;
+  color: var(--subtitle-color);
   font-size: 1rem;
   text-align: justify;
   margin-bottom: 1.2rem;
@@ -445,7 +448,7 @@ section p{
 }
 
 .education-subtitle {
-  color: #bdbdbd;
+  color: var(--subtitle-color);
   font-size: 1.1rem;
   margin-bottom: 2.5rem;
 }
@@ -459,7 +462,7 @@ section p{
 }
 
 .education-card {
-  background: var(--card-color);
+  background: var(--Card-Background-color);
   border-radius: 12px;
   padding: 2rem;
   width: 350px;
@@ -469,6 +472,7 @@ section p{
   transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
   border: 1.5px solid var(--border-color);
   position: relative;
+  box-shadow: var(--box-shadow);
   text-align: left;
 }
 
@@ -519,7 +523,7 @@ section p{
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
-  color: #bdbdbd;
+  color: var(--experienx-meta-color);
   font-size: 0.9rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -551,7 +555,7 @@ section p{
 }
 
 .certifications-subtitle {
-  color: #bdbdbd;
+  color: var(--subtitle-color);
   font-size: 1.1rem;
   margin-bottom: 2.5rem;
 }
@@ -565,7 +569,7 @@ section p{
 }
 
 .certification-card {
-  background: var(--card-color);
+  background: var(--Card-Background-color);
   border-radius: 12px;
   padding: 0;
   width: 350px;
@@ -573,6 +577,7 @@ section p{
   flex-direction: column;
   transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
   border: 1.5px solid var(--border-color);
+  box-shadow: var(--box-shadow);
   overflow: hidden;
 }
 
@@ -585,7 +590,7 @@ section p{
 .certification-image {
   width: 100%;
   height: 200px;
-  background: var(--card-color);
+  background: var(--bg-grid-color-top);
   padding: 10px;
   display: flex;
   align-items: center;
@@ -639,7 +644,7 @@ section p{
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #bdbdbd;
+  color: var(--experienx-meta-color);
   font-size: 0.9rem;
 }
 
@@ -654,7 +659,7 @@ section p{
 }
 
 .skills-subtitle {
-  color: #bdbdbd;
+  color: var(--subtitle-color);
   font-size: 1.1rem;
   margin-bottom: 2.5rem;
 }
@@ -681,12 +686,13 @@ section p{
 }
 
 .skill-card {
-  background: var(--card-color);
+  background: var(--Card-Background-color);
   border-radius: 8px;
   padding: 1rem 0.8rem;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
   border: 1px solid var(--border-color);
+  box-shadow: var(--box-shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -839,15 +845,15 @@ section p{
 }
 
 .contact-subtitle {
-  color: #bdbdbd;
+  color: var(--subtitle-color);
   font-size: 1.1rem;
   margin-bottom: 2.5rem;
 }
 
 .contact-form {
-  background: rgba(5, 5, 5, 0.85); /* glassy dark */
+  background: var(--contact-form-color); /* glassy dark */
   border-radius: 18px;
-  /* box-shadow: 0 4px 32px 0 #4f8cff22, 0 1.5px 0 0 var(--primary-color); */
+  box-shadow: var(--box-shadow);
   padding: 2.5rem 2rem 2rem 2rem;
   max-width: 800px;
   margin: 0 auto;
@@ -867,7 +873,7 @@ section p{
   inset: 0;
   border-radius: 18px;
   pointer-events: none;
-  background: linear-gradient(120deg, rgba(79,140,255,0.08) 0%, rgba(255,76,76,0.08) 100%);
+  background: var(--contact-form-color);
   z-index: 0;
 }
 
@@ -898,7 +904,8 @@ section p{
   padding: 0.5rem 1rem;
   border-radius: 8px;
   border: 1px solid var(--border-color);
-  background: rgba(20, 22, 30, 0.95);
+  background: var(--Card-Background-color);
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
   color: var(--text-color);
   font-size: 1rem;
   margin-bottom: 0.2rem;
@@ -911,11 +918,12 @@ section p{
 }
 
 .contact-btn {
-  background: var(--border-color);
-  color: #fff;
+  background: var(--Card-Background-color);
+  color: var(--text-color);
   border: none;
   width: 30%;
   border-radius: 5px;
+  box-shadow: var(--box-shadow);
   padding: 0.5rem 1rem;
   font-size: 1.1rem;
   font-weight: 600;

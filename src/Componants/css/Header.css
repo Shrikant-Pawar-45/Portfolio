@@ -1,7 +1,9 @@
 .header-blur {
-  background: rgba(30, 30, 30, 0.7);
+  background: var(--header-color);
+  align-items: center;
   backdrop-filter: blur(10px);
   transition: background 0.3s, backdrop-filter 0.3s;
+  box-shadow: var(--box-shadow);
 }
 
 .header-transparent {
@@ -12,7 +14,7 @@
 header {
   /* Keep your existing header layout styles here, but remove background-color */
   padding: 20px 40px;
-  color: #f5f5f5;
+  color: var(--black-white-color);
   display: inline-flex;
   top: 0;
   left: 0;
@@ -41,8 +43,8 @@ header {
   .header-left {
     display: flex;
     align-items: center;
+    text-align: center;
     font-size: 2rem;
-   
     font-weight: bold;
     margin-right: 10px;
     gap: 10px;
@@ -66,7 +68,7 @@ header {
   }
   
   nav ul li a {
-    color: #f5f5f5;
+    color: var(--black-white-color);
     text-decoration: none;
     font-weight: 500;
     font-size: 1rem;
@@ -96,7 +98,8 @@ header {
   
   nav ul li a:hover {
     color: red;
-    background-color: #2c2c2c5a;
+    background-color: var(--header-hover-background-text-color);
+    box-shadow: var(--header-text-color-hover-box-shadow);
     transform: translateY(-2px);
     transition: 0.5s;
     backdrop-filter: blur(10px);
@@ -121,12 +124,13 @@ header {
     cursor: pointer;
     padding: 10px 10px 10px 10px;
     transition: color 0.2s;
-    color: #f5f5f5;
+    color: var(--black-white-color);
   }
   
   .theme-toggle:hover {
     padding: 10px 10px 10px 10px;
-    background-color: #2c2c2c77;
+    background-color: var(--header-hover-background-text-color);
+    box-shadow: var(--header-text-color-hover-box-shadow);
     border-radius: 5px;
     transform: translateY(-2px);
     transition: 0.5s;
@@ -144,10 +148,10 @@ header {
     position: absolute;
     right: 10px;
     top: 140%;
-    background: #222;
-    color: #fff;
+    background: var(--Card-Background-color);
+    color: var(--black-white-color);
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: var(--header-text-color-hover-box-shadow);
     min-width: 100px;
     z-index: 2000;
     padding: 5px;
@@ -163,12 +167,13 @@ header {
   }
   
   .theme-menu li:hover {
-    background: #3d3d3d86;
+    background: var(--white-Black-color);
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; */
     transition: 0.5s;
     backdrop-filter: blur(10px);
     border-radius: 5px;
     text-decoration: none;
-    color: white;
+    color: var(--primary-color);
   }
   
   .theme-dropdown:hover .theme-menu,
@@ -195,7 +200,7 @@ header {
     }
     .header-left {
       font-size: 1.1rem;
-      margin-bottom: 10px;
+      /* margin-bottom: 10px; */
     }
     nav ul {
       flex-direction: column;
