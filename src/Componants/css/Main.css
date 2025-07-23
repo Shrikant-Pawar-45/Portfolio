@@ -429,7 +429,21 @@ section p{
       font-size: 1rem;
     }
   }
-
+@media (max-width: 600px) {
+  .experience-card {
+    margin: 0.7rem auto;
+    width: 96vw;
+    max-width: 98vw;
+    min-width: unset;
+    box-sizing: border-box;
+    padding: 0.8rem 0.5rem;
+    border-radius: 10px;
+    font-size: 0.98rem;
+  }
+  .experience-section {
+    padding: 0 0.2rem;
+  }
+}
 /* Education Section Styles */
 .education-section {
   display: flex;
@@ -647,7 +661,7 @@ section p{
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-width: 100vh;
+  max-width: 100vh;
 }
 
 .skills-subtitle {
@@ -783,7 +797,36 @@ section p{
     margin-bottom: 1rem;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 600px) {
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+    padding: 0.5rem 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  .skills-row {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+  }
+  .skill-card {
+    min-width: 48px;
+    max-width: 60px;
+    width: 18vw;
+    margin: 0;
+    padding: 0.5rem 0.2rem;
+    box-sizing: border-box;
+  }
+}
+/* @media (max-width: 480px) {
   .skills-grid {
     gap: 0.8rem;
   }
@@ -824,7 +867,7 @@ section p{
     width: 35px;
     height: 35px;
   }
-}
+} */
 
 .contact-section {
   display: flex;

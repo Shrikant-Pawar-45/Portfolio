@@ -213,6 +213,9 @@
     padding: 8px 10px;
     font-size: 0.95rem;
   }
+  .scroll-mouse-indicator{
+    display: none !important;
+  }
 }
 
 .scroll-mouse-indicator {
@@ -251,5 +254,11 @@
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .scroll-mouse-indicator {
+    display: none !important;
+  }
 }
 
