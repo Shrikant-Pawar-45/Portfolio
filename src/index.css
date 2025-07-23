@@ -227,3 +227,26 @@ body {
     background-size: 150vw 150vh, 15px 40px, 15px 40px;
     background-repeat: no-repeat, repeat, repeat;
 }
+html {
+  font-size: clamp(15px, 2vw, 18px);
+}
+
+body {
+  font-size: 1rem; /* base size, scales with html */
+}
+
+h1, .hero-title {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+}
+
+h2, .section--tittle, .experience-title, .skills-title {
+  font-size: clamp(1.3rem, 3.5vw, 2rem);
+}
+
+h3, .project-title, .certification-title, .education-card .institution {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+}
+
+p, .section--content, .project-description, .certification-provider, .education-card .qualification {
+  font-size: clamp(0.98rem, 2vw, 1.1rem);
+}

@@ -248,7 +248,7 @@ header {
 }
 
 /* Show hamburger on small screens */
-@media (max-width: 867px) {
+@media (max-width: 980px) {
   .hamburger {
     display: block;
     position: absolute;

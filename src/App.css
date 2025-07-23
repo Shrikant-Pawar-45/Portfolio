@@ -179,7 +179,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 770px) {
   header {
     flex-direction: column;
     align-items: flex-start;
@@ -190,7 +190,7 @@
     margin: auto;
   }
   .hero-section-container{
-    top: 25vh;
+    top: 20vh;
   }
   .hero-image img{
     width: 100%;
