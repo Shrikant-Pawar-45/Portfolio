@@ -1000,3 +1000,74 @@ section p{
     border-radius: 10px;
   }
 }
+
+.about-section {
+  width: 100%;
+  padding: 80px 0;
+}
+
+.section--container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section--tittle {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.section--content {
+  background: var(--Card-Background-color);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  margin: 0 auto;
+  color: var(--text-color);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  box-shadow: var(--Card-Background-shadow);
+  width: 80%;
+  max-width: 800px;
+  text-align: left;
+}
+
+.section--content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .section--container {
+    padding: 0 1rem;
+  }
+  .section--content {
+    width: 95%;
+    padding: 2rem 1rem;
+    font-size: 1.05rem;
+  }
+  .section--tittle {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-section {
+    padding: 10px 0;
+  }
+  .section--container {
+    padding: 0 0.5rem;
+  }
+  .section--content {
+    width: 100%;
+    padding: 1.2rem 0.5rem;
+    font-size: 0.98rem;
+    border-radius: 8px;
+  }
+  .section--tittle {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+}

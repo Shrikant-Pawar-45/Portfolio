@@ -122,27 +122,51 @@ header {
     margin-right: 10px;
     font-size: 1.3rem;
     cursor: pointer;
-    padding: 10px 10px 10px 10px;
     transition: color 0.2s;
     color: var(--black-white-color);
   }
   
   .theme-toggle:hover {
-    padding: 10px 10px 10px 10px;
-    background-color: var(--header-hover-background-text-color);
-    box-shadow: var(--header-text-color-hover-box-shadow);
     border-radius: 5px;
     transform: translateY(-2px);
     transition: 0.5s;
     backdrop-filter: blur(10px);
     color: #ff4c4c; /* accent red on hover */
   }
-  
+  .themehide-x{
+    margin-left: 5px;
+    margin-right: 10px;
+    font-size: 1.3rem;
+    text-decoration: none;
+    transition: 0.5s;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: color 0.2s;
+    list-style: none;
+  }
   .theme-dropdown {
     position: relative;
     display: inline-block;
   }
   
+  @media (min-width: 868px) {
+    .themehide {
+      display: none;
+    }
+   
+  }
+
+  @media (max-width: 867px) {
+    .themehide {
+      display: inline-block;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .themehide-x {
+      display: none;
+    }
+  }
+
   .theme-menu {
     display: none;
     position: absolute;
@@ -192,7 +216,7 @@ header {
     }
   }
   
-  @media (max-width: 767px) {
+  @media (max-width: 867px) {
     header {
       flex-direction: column;
       align-items: flex-start;
@@ -224,17 +248,18 @@ header {
 }
 
 /* Show hamburger on small screens */
-@media (max-width: 767px) {
+@media (max-width: 867px) {
   .hamburger {
     display: block;
     position: absolute;
+    color: var(--black-white-color);
     right: 20px;
-    top: 20px;
+    /* top: 20px; */
   }
   nav ul {
     display: none;
     flex-direction: column;
-    background: #222;
+    background: var(--Card-Background-color);
     position: absolute;
     top: 60px;
     right: 0;
@@ -245,5 +270,45 @@ header {
   }
   nav.mobile-menu-open ul {
     display: flex;
+  }
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Responsive: stack nav below, keep logo + toggle + hamburger in one row */
+@media (max-width: 867px) {
+  header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px 5px;
+  }
+  .header-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .header-left {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+  .hamburger {
+    position: static;
+    margin-left: auto;
+  }
+  nav {
+    width: 100%;
   }
 }
