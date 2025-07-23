@@ -187,11 +187,7 @@ export default function Main() {
       </div>
       <a className="details-btn" href="#"><ShinyText text="View Details ↗" disabled={false} speed={3} className='custom-class' /></a>
     </div>
-    <div className="timeline">
-      <div className="timeline-dot"></div>
-      <div className="timeline-dot timeline-dot-2"></div>
-    </div>
-    <div className="experience-card experience-card-2">
+    <div className="experience-card">
       <div className="company">
         <span role="img" aria-label="briefcase">💼</span> Innovate Corp
       </div>
