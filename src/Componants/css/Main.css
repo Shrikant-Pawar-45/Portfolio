@@ -432,8 +432,7 @@ section p{
 @media (max-width: 600px) {
   .experience-card {
     margin: 0.7rem auto;
-    width: 96vw;
-    max-width: 98vw;
+    max-width: 60vh;
     min-width: unset;
     box-sizing: border-box;
     padding: 0.8rem 0.5rem;
@@ -661,6 +660,10 @@ section p{
   align-items: center;
   justify-content: center;
   text-align: center;
+  margin: 0px auto;
+  max-width: 100vh;
+}
+.skills-section .section--container{
   max-width: 100vh;
 }
 
