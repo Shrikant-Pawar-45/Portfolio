@@ -11,7 +11,7 @@
 }
 
 .footer-content {
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -26,9 +26,9 @@
   align-items: center;
   gap: 0.7rem;
 }
-
 .footer-center {
   gap: 1.2rem;
+  justify-content: center;
 }
 
 .footer-icon {

@@ -10,6 +10,27 @@ const ThemeToggle = () => {
     localStorage.getItem("theme") || "light"
   );
 
+  // Animation trigger function
+  function triggerThemeTransition(newTheme) {
+    const overlay = document.querySelector('.theme-transition-overlay');
+    if (!overlay) return;
+    overlay.style.setProperty('--theme-transition-color',
+      newTheme === "dark" ? "#181818" : "#fff"
+    );
+    overlay.classList.add('active');
+    setTimeout(() => {
+      overlay.classList.remove('active');
+    }, 600); // match the CSS transition duration
+  }
+
+  // Theme change handler
+  const handleThemeChange = (newTheme) => {
+    triggerThemeTransition(newTheme);
+    setTimeout(() => {
+      setTheme(newTheme);
+    }, 500); // 2s matches your CSS transition duration
+  };
+
   useEffect(() => {
     let appliedTheme = theme;
     if (theme === "system") {
@@ -17,23 +38,21 @@ const ThemeToggle = () => {
     }
     if (appliedTheme === "dark") {
       document.body.classList.add("Dark-theme");
+      document.body.classList.remove("Light-theme");
     } else {
       document.body.classList.remove("Dark-theme");
-    }
-    if (appliedTheme === "light") {
       document.body.classList.add("Light-theme");
-    } else {
-      document.body.classList.remove("Light-theme");
     }
     localStorage.setItem("theme", theme);
 
-    // Listen for system theme changes if 'system' is selected
     if (theme === "system") {
       const listener = (e) => {
         if (e.matches) {
           document.body.classList.add("Dark-theme");
+          document.body.classList.remove("Light-theme");
         } else {
           document.body.classList.remove("Dark-theme");
+          document.body.classList.add("Light-theme");
         }
       };
       window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", listener);
@@ -48,9 +67,9 @@ const ThemeToggle = () => {
         {theme === "dark" || (theme === "system" && getSystemTheme() === "dark") ? <Icon.SunFill /> : <Icon.MoonFill />}
       </span>
       <ul className="theme-menu">
-        <li onClick={() => setTheme("light")}>Light</li>
-        <li onClick={() => setTheme("dark")}>Dark</li>
-        <li onClick={() => setTheme("system")}>System</li>
+        <li onClick={() => handleThemeChange("light")}>Light</li>
+        <li onClick={() => handleThemeChange("dark")}>Dark</li>
+        <li onClick={() => handleThemeChange("system")}>System</li>
       </ul>
     </li>
   );
@@ -106,5 +125,4 @@ const Header = () => {
     </header>
   );
 };
-
 export default Header;

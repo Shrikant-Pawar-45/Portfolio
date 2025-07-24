@@ -19,19 +19,23 @@
 }
 .Light-theme{
     --primary-color: #e61f1f;
+    --theme-transition-color: #fff;
     --secondary-color: #eb2525;
     --tertiary-color: #3e3e3e;
     --white-Black-color: #ffff;
     --black-white-color:#000000;
     --quinary-color: #f5f5f5;
+    --git-hub-color: #181818;
     --senary-color: #222;
     --septenary-color: #4f8cff;
     --octonary-color: #2563eb;
+    --user-color: #0077fe;
     --text-color: #000000;
     --subtitle-color:#353535;
     --blueviolet-color: #8a2be2;
     --card-color: rgba(0, 0, 0, 0.85);
     --border-color-b:#ffffff;
+    --menu-blur-color:rgb(255, 255, 255);
     /* --border-color: #adadad; */
     --white-color: #fff;
     --shiny-text-color:#00000081;
@@ -59,7 +63,7 @@
     --bg-grid-color-top:rgba(236, 233, 233, 0.491);
     --bg-grid-color-bottom:rgba(236, 233, 233, 0.491);
     --timeline-color:rgb(224, 224, 224);
-    --experienx-meta-color:#7d7d7d;
+    --experienx-meta-color:#585858;
     /* Card color */
     --Card-Background-color:rgba(255, 255, 255, 0.85);
     --Card-Background-shadow:rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -75,7 +79,10 @@
 .Dark-theme{
   --primary-color: #ff4c4c;
   --secondary-color: #eb2525;
+  --theme-transition-color: #181818;
   --tertiary-color: #3e3e3e;
+  --user-color: #0077fe;
+  --git-hub-color: #e8e8e8;
   --white-Black-color: #000000;
   --black-white-color:#ffffff;
   --subtitle-color:#bdbdbd;
@@ -94,6 +101,7 @@
   --shiny-text-color-rgb2:rgba(255, 255, 255, 0.774) 50%;
   --shiny-text-color-rgb3:rgba(255, 255, 255, 0) 60%;
   --black-color: #000000;
+  --menu-blur-color:rgba(14, 14, 14, 0.667);
   /* Header Color */
   --header-color:#1d1d1d90;
   --header-text-color:#000000;
@@ -104,7 +112,7 @@
   /* Card color */
   --Card-Background-color:rgba(14, 14, 14, 0.872);
   --Card-Background-shadow:rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  --card-Btn-color:rgba(23, 23, 23, 0.85);
+  --card-Btn-color:rgb(38, 38, 38);
   --card-Btn-shadow:rgba(0, 0, 0, 0.16) 0px 1px 4px;
   --box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   /* Footer Color */
@@ -120,7 +128,7 @@
   --timeline-color:rgb(46, 46, 46);
   --experienx-meta-color:#bdbdbd;
   /* Contact Form color */
-  --contact-form-color:linear-gradient(120deg, rgba(79,140,255,0.08) 0%, rgba(255,76,76,0.08) 100%);
+  --contact-form-color:linear-gradient(120deg, rgba(0, 0, 0, 0.158) 0%, rgba(255,76,76,0.08) 100%);
   --contact-form-shadow:rgba(0, 0, 0, 0.35) 0px 5px 15px;
   --contact-form-border-color:rgba(0, 0, 0, 0.16) 0px 1px 4px;
   --hamburger-color: #fff; /* white for dark theme */

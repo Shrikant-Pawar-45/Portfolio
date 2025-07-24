@@ -171,8 +171,8 @@ header {
     display: none;
     position: absolute;
     right: 10px;
-    top: 140%;
-    background: var(--Card-Background-color);
+    top: 100%;
+    background: var(--menu-blur-color);
     color: var(--black-white-color);
     border-radius: 8px;
     box-shadow: var(--header-text-color-hover-box-shadow);
@@ -183,7 +183,12 @@ header {
     list-style: none;
     font-size: 0.95rem;
   }
-  
+  @media screen and (max-width: 880px) {
+    .theme-menu {
+      right: 10px;
+      top: 8vh;
+    }
+  }
   .theme-menu li {
     padding: 10px 16px;
     cursor: pointer;
@@ -215,8 +220,8 @@ header {
       gap: 6px;
     }
   }
-  
-  @media (max-width: 867px) {
+/*   
+  @media (max-width: 880px) {
     header {
       flex-direction: column;
       align-items: flex-start;
@@ -224,7 +229,7 @@ header {
     }
     .header-left {
       font-size: 1.1rem;
-      /* margin-bottom: 10px; */
+
     }
     nav ul {
       flex-direction: column;
@@ -235,9 +240,9 @@ header {
       padding: 8px 10px;
       font-size: 0.95rem;
     }
-  }
+  } */
 
-/* Hide hamburger by default */y
+/* Hide hamburger by default */
 .hamburger {
   display: none;
   background: none;
@@ -253,17 +258,19 @@ header {
     display: block;
     position: absolute;
     color: var(--black-white-color);
-    right: 20px;
-    /* top: 20px; */
+    right: 60px;
   }
   nav ul {
     display: none;
     flex-direction: column;
-    background: var(--Card-Background-color);
+    background: var(--menu-blur-color);
+    backdrop-filter: blur(10px);
     position: absolute;
-    top: 60px;
+    top: 68px;
     right: 0;
-    width: 180px;
+    left: 0;
+    height: auto;
+    width: 100%;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     z-index: 1050;
@@ -287,7 +294,7 @@ header {
 }
 
 /* Responsive: stack nav below, keep logo + toggle + hamburger in one row */
-@media (max-width: 867px) {
+@media (max-width: 880px) {
   header {
     flex-direction: column;
     align-items: stretch;
@@ -307,8 +314,26 @@ header {
   .hamburger {
     position: static;
     margin-left: auto;
+    margin-right: 10px;
   }
   nav {
     width: 100%;
   }
+}
+.theme-transition-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: var(--theme-transition-color, #fff);
+  opacity: 1;
+  clip-path: circle(0% at 0 0);
+  transition: 
+    clip-path 2s cubic-bezier(.4,2,.6,1),
+    background 0.2s;
+  will-change: clip-path, background;
+}
+
+.theme-transition-overlay.active {
+  clip-path: circle(150% at 0 0);
 }

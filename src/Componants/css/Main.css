@@ -174,7 +174,7 @@ section p{
   text-align: center;
   justify-content: center;
   gap: 0.5rem;
-  box-shadow: var(--card-Btn-shadow);
+  box-shadow: var(--box-shadow);
   border: none;
 }
 
@@ -470,7 +470,7 @@ section p{
   background: var(--Card-Background-color);
   border-radius: 12px;
   padding: 2rem;
-  width: 350px;
+  width: 360px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -532,7 +532,9 @@ section p{
   font-size: 0.9rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+.education-dates,.grade-label,.grade-value,.percentage{
+  color: var(--experienx-meta-color);
+}
 .education-dates span:first-child {
   font-size: 1rem;
 }
@@ -557,6 +559,7 @@ section p{
   align-items: center;
   justify-content: center;
   text-align: center;
+  margin: 0px auto;
 }
 
 .certifications-subtitle {
@@ -566,18 +569,38 @@ section p{
 }
 
 .certifications-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 4rem;
+  justify-items: center;
+  align-items: stretch;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+@media (max-width: 800px) {
+  .certifications-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .certifications-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
 }
 
 .certification-card {
   background: var(--Card-Background-color);
   border-radius: 12px;
   padding: 0;
-  width: 350px;
+  width: 100%;
+  max-width: 350px;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
@@ -890,7 +913,7 @@ section p{
 
 .contact-form {
   background: var(--contact-form-color); /* glassy dark */
-  border-radius: 18px;
+  border-radius: 7px;
   box-shadow: var(--box-shadow);
   padding: 2.5rem 2rem 2rem 2rem;
   max-width: 800px;
@@ -909,7 +932,7 @@ section p{
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 18px;
+  border-radius: 7px;
   pointer-events: none;
   background: var(--contact-form-color);
   z-index: 0;
@@ -983,14 +1006,27 @@ section p{
   transform: translateY(-2px) scale(1.03);
   box-shadow: 0 4px 24px 0 #4f8cff33;
 }
-
+.contact-btn-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 @media (max-width: 600px) {
   .contact-form {
-    padding: 1.2rem 0.5rem 1rem 0.5rem;
+    /* padding: 1.2rem 0.5rem 1rem 0.5rem; */
+   padding: 15px 15px 15px 15px;
+   border-radius: 5px;
+  }
+  .contact-section{
+    padding: 15px 15px 15px 15px;
   }
   .contact-row {
     flex-direction: column;
     gap: 1rem;
+  }
+  .contact-btn{
+    width: 70%;
   }
 }
 
@@ -1005,7 +1041,7 @@ section p{
   }
   .experience-card,
   .experience-card-2 {
-    max-width: 95vw;
+    max-width: 60vw;
     min-width: unset;
     width: 95vw;
     margin: 0 0 1.5rem 0;
@@ -1036,6 +1072,8 @@ section p{
     padding: 0.8rem 0.7rem;
     font-size: 0.98rem;
     border-radius: 10px;
+    max-width: 90vh;
+    min-width: unset;
   }
 }
 
@@ -1079,7 +1117,7 @@ section p{
 
 @media (max-width: 900px) {
   .section--container {
-    padding: 0 1rem;
+    padding: 15px 15px 15px 15px;
   }
   .section--content {
     width: 95%;
@@ -1096,11 +1134,11 @@ section p{
     padding: 40px 0;
   }
   .section--container {
-    padding: 0 0.5rem;
+    padding: 15px 15px 15px 15px;
   }
   .section--content {
     width: 100%;
-    padding: 1.2rem 0.5rem;
+    padding: 15px 15px 15px 15px;
     font-size: 0.98rem;
     border-radius: 8px;
   }

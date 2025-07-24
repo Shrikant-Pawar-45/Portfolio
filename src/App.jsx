@@ -13,6 +13,7 @@ function App() {
   return (
 <>
         <div className='red-grid-bg '>
+          <div className='theme-transition-overlay'></div>
         <ClickSpark
           sparkColor="#ff4c4c"
           sparkSize={10}

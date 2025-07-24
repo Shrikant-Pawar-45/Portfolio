@@ -81,14 +81,14 @@ export default function Main() {
       image: "https://i.postimg.cc/FFc1zgbp/LUEJSNOV124130-page-0001.jpg",
       alt: "Certificate 3",
       title: "JavaScript Essentials",
-      provider: "LinkedIn Learning",
+      provider: "Lets Upgrade",
       date: "2022"
     },
     {
       image: "https://i.postimg.cc/VvjNhmsp/LUENJSDEC124604-page-0001.jpg",
       alt: "Certificate 4",
-      title: "React Developer",
-      provider: "LinkedIn Learning",
+      title: "Node.js Bootcamp",
+      provider: "Lets Upgrade",
       date: "2022"
     },
     {
@@ -102,7 +102,7 @@ export default function Main() {
       image: "https://i.postimg.cc/xdc12KTK/Python-Certificate-page-0001.jpg",
       alt: "Python Certificate",
       title: "Python Programming",
-      provider: "Coursera",
+      provider: "ThoughtBliss Solution",
       date: "2021"
     }
   ];
@@ -175,29 +175,31 @@ export default function Main() {
   <div className="timeline-container">
     <div className="experience-card">
       <div className="company">
-        <span role="img" aria-label="briefcase">💼</span> Innovate Corp
+        <span role="img" aria-label="briefcase">💼</span> Chung chang University - Taiwan
       </div>
-      <div className="role">Software Engineer Intern</div>
+      <div className="role">Research Intern</div>
       <div className="meta">
-        <span>📅 Jun 2022 - Aug 2022</span>
+        <span>📅 Apri 2025 - Ongoing</span>
         <span>🌐 Remote</span>
       </div>
       <div className="description">
-        Worked on the core platform, contributing to both front-end and back-end services. Developed new features, fixed bugs, and participated in the full...
+      Conducting hyperspectral image analysis for cancer detection using pattern recognition.
+      Identifying anomalies in medical datasets to improve diagnostic precision.
+      
       </div>
       <a className="details-btn" href="#"><ShinyText text="View Details ↗" disabled={false} speed={3} className='custom-class' /></a>
     </div>
     <div className="experience-card">
       <div className="company">
-        <span role="img" aria-label="briefcase">💼</span> Innovate Corp
+        <span role="img" aria-label="briefcase">💼</span> Thought bliss Solution - Pune
       </div>
-      <div className="role">Software Engineer Intern</div>
+      <div className="role">Python Developer Intern</div>
       <div className="meta">
         <span>📅 Jun 2022 - Aug 2022</span>
         <span>🌐 Remote</span>
       </div>
       <div className="description">
-        Worked on the core platform, contributing to both front-end and back-end services. Developed new features, fixed bugs, and participated in the full...
+      Developed automation scripts and data processing tools using Python, and worked closely with senior developers to deliver high-quality solutions for real-world business problems.
       </div>
       <a className="details-btn" href="#"><ShinyText text="View Details ↗" disabled={false} speed={3} className='custom-class' /></a>
     </div>
@@ -229,7 +231,7 @@ export default function Main() {
               <div className="education-separator"></div>
               <div className="education-dates">
                 <div className="edu-left"><span role="img" aria-label="calendar">📅</span>
-                <span>2024 - 2027</span></div>
+                <span> 2024 - 2027</span></div>
                 <div className="edu-right">
                 <span className="grade-label">Grade: </span>
                 <span className="grade-value"> A+ </span>
@@ -252,7 +254,7 @@ export default function Main() {
               <div className="education-separator"></div>
               <div className="education-dates">
                 <div className="edu-left"><span role="img" aria-label="calendar">📅</span>
-                <span>2021 - 2024</span></div>
+                <span> 2021 - 2024</span></div>
                 <div className="edu-right">
                 <span className="grade-label">Percentage: </span>
                 <span className="grade-value"> A </span> 
@@ -357,9 +359,11 @@ export default function Main() {
             <label htmlFor="message">Message</label>
             <textarea id="message" name="message" rows={4} required />
           </div>
+          <div className='contact-btn-container'>
           <button type="submit" className="contact-btn" onClick={handleSubmit} style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem'}}>
             Send Message <Icons.SendFill />
           </button>
+          </div>
         </form>
       </div>
     </section>
