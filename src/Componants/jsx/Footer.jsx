@@ -27,7 +27,7 @@ const Footer = () => (
           {/* LinkedIn SVG */}
           <Icons.Linkedin style={{color: "var(--septenary-color)"}}/>
         </a>
-        <a className="footer-icon" title="Admin" target="_blank" rel="noopener noreferrer">
+        <a href="https://portfolioadmin-sage.vercel.app/"className="footer-icon" title="Admin" target="_blank" rel="noopener noreferrer">
         < FaUserTie style={{color: "var(--user-color)"}}/>
         </a>
       </div>
