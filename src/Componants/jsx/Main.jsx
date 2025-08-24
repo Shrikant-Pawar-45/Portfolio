@@ -1,49 +1,89 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ClickSpark from '../../../ClickSpark/ClickSpark.jsx';
 import ShinyText from '../../../ClickSpark/ShinyText/ShinyText.jsx';
-import * as Icons from 'react-bootstrap-icons';
+import { FiSend, FiBriefcase, FiCalendar, FiGlobe, FiAward, FiExternalLink } from 'react-icons/fi';
 import '../css/Main.css';
 import '../../index.css';
+import * as Icons from 'react-icons/fi';
 import ProjectCard from './ProjectCard.jsx';
+import ProjectModal from './ProjectModal.jsx';
+import { fetchProjects } from '../../services/projects.js';
+import { fetchAbout } from '../../services/about.js';
+import { fetchEducation } from '../../services/education.js';
+import { fetchInternships } from '../../services/internships.js';
+import { fetchCertifications } from '../../services/certifications.js';
 
 export default function Main() {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [projects, setProjects] = useState([]);
+  const [loadingProjects, setLoadingProjects] = useState(true);
+  const [about, setAbout] = useState(null);
+  const [loadingAbout, setLoadingAbout] = useState(true);
+  const [education, setEducation] = useState([]);
+  const [loadingEducation, setLoadingEducation] = useState(true);
+  const [internships, setInternships] = useState([]);
+  const [loadingInternships, setLoadingInternships] = useState(true);
+  const [certifications, setCertifications] = useState([]);
+  const [loadingCertifications, setLoadingCertifications] = useState(true);
 
-  const projects = [
+  const fallbackProjects = [
     {
       image: 'https://i.postimg.cc/ydR2Cj3g/Screenshot-2025-07-05-162808.png',
       title: 'XPrime Website',
       description: 'Xprime – A Prompt-to-Image Showcase Explore a visual gallery of AI-generated images, each paired with the prompt that created it',
-      objective: 'Showcase AI-generated images with their prompts.',
-      techstack: 'React, JavaScript, CSS, GitHub Pages',
       link: 'https://shrikant-pawar-45.github.io/Xprime/'
     },
     {
       image: 'https://i.postimg.cc/RZjvcT8P/Screenshot-2025-07-19-154741.png',
       title: 'Portfolio Website',
       description: 'This very portfolio website, designed to be dynamic and easily updatable through a custom admin panel.',
-      objective: 'Personal branding and project showcase.',
-      techstack: 'React, Vite, CSS, JavaScript',
       link: '#'
     },
     {
       image: 'https://i.postimg.cc/446TFSNt/Screenshot-2025-05-13-113925.png',
-      title: 'Developing and Designing Online Bus Pass System for Pass Holder',
-      description: 'Now, we are developing an Android application for pass holders, which will help pass holders renew or get a new pass at any time',
-      objective: 'Digitize and simplify bus pass management.',
-      techstack: 'Android Studio, Java, Firebase',
+      title: 'Online Bus Pass System',
+      description: 'Android app to help pass holders renew or get a new pass anytime.',
       link: '#'
     },
     {
       image: 'https://i.postimg.cc/brCgBPGp/circuit-image-2.png',
-      title: 'NPK Soil Nutrients Analysis System Using IOT',
-      description: 'We have developed an NPK ( Nitrogen, Potassium, Phosphorus) soil analysis system. This project aims to detect nutrients from the soil, and the system helps farmers understand the soil condition.',
-      objective: 'Assist farmers in analyzing soil nutrients.',
-      techstack: 'IoT, Sensors, Embedded C, Circuit Design',
+      title: 'NPK Soil Nutrients Analysis (IoT)',
+      description: 'Detects soil nutrients (NPK) to assist farmers in understanding soil conditions.',
       link: '#'
     },
   ];
+
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      try {
+        const [projData, aboutData, eduData, internData, certData] = await Promise.all([
+          fetchProjects().catch(() => null),
+          fetchAbout().catch(() => null),
+          fetchEducation().catch(() => null),
+          fetchInternships().catch(() => null),
+          fetchCertifications().catch(() => null),
+        ]);
+        if (!mounted) return;
+        if (projData && projData.length) setProjects(projData);
+        else setProjects(fallbackProjects);
+        if (aboutData) setAbout(aboutData);
+        if (eduData && eduData.length) setEducation(eduData);
+        if (internData && internData.length) setInternships(internData);
+        if (certData && certData.length) setCertifications(certData);
+      } catch (e) {
+        setProjects(fallbackProjects);
+      } finally {
+        if (mounted) setLoadingProjects(false);
+        if (mounted) setLoadingAbout(false);
+        if (mounted) setLoadingEducation(false);
+        if (mounted) setLoadingInternships(false);
+        if (mounted) setLoadingCertifications(false);
+      }
+    })();
+    return () => { mounted = false; };
+  }, []);
 
   const skills = [
     { image: 'https://i.postimg.cc/W3FJpBSb/html.png', name: 'HTML', alt: 'HTML' },
@@ -62,51 +102,27 @@ export default function Main() {
     { image: 'https://i.postimg.cc/J7XBfWGp/mongodb.png', name: 'MongoDB', alt: 'MongoDB' },
     { image: 'https://i.postimg.cc/RVzn9bt4/mysql.png', name: 'MySQL', alt: 'MySQL' }
   ];
-  const certifications = [
-    {
-      image: "https://i.postimg.cc/yd3xF0MV/Geeks-for-Geeks-Mango-DB-Certificate-page-0001.jpg",
-      alt: "MongoDB Certificate",
-      title: "MongoDB Certificate",
-      provider: "Geeks for Geeks",
-      date: "2023"
-    },
-    {
-      image: "https://i.postimg.cc/6qs3zyKC/Geeks-For-Geeks-Full-Stack-Devloper-page-0001.jpg",
-      alt: "Full Stack Developer Certificate",
-      title: "Full Stack Developer",
-      provider: "Geeks for Geeks",
-      date: "2023"
-    },
-    {
-      image: "https://i.postimg.cc/FFc1zgbp/LUEJSNOV124130-page-0001.jpg",
-      alt: "Certificate 3",
-      title: "JavaScript Essentials",
-      provider: "Lets Upgrade",
-      date: "2022"
-    },
-    {
-      image: "https://i.postimg.cc/VvjNhmsp/LUENJSDEC124604-page-0001.jpg",
-      alt: "Certificate 4",
-      title: "Node.js Bootcamp",
-      provider: "Lets Upgrade",
-      date: "2022"
-    },
-    {
-      image: "https://i.postimg.cc/ZKxRFbMy/Oracle-Java-Fundamentals-Certificate-page-0001.jpg",
-      alt: "Oracle Java Fundamentals Certificate",
-      title: "Java Fundamentals",
-      provider: "Oracle",
-      date: "2021"
-    },
-    {
-      image: "https://i.postimg.cc/xdc12KTK/Python-Certificate-page-0001.jpg",
-      alt: "Python Certificate",
-      title: "Python Programming",
-      provider: "ThoughtBliss Solution",
-      date: "2021"
-    }
-  ];
+  // certifications will be fetched; keep UI-compatible shape
   const handleOpenModal = (project) => {
+    // Debug: inspect fetched project fields
+    try {
+      console.log('[Project View] Selected project:', project);
+      console.log('[Project View] Fields ->', {
+        title: project?.title,
+        description: project?.description,
+        objective: project?.objective,
+        status: project?.status,
+        type: project?.type,
+        skills: project?.skills,
+        image: project?.image,
+        imageUrl: project?.imageUrl,
+        start: project?.start,
+        end: project?.end,
+        link: project?.link,
+      });
+      // Expose globally for easy copy/paste: run `copy(JSON.stringify(window.__lastProject, null, 2))`
+      if (typeof window !== 'undefined') window.__lastProject = project;
+    } catch (_) {}
     setSelectedProject(project);
     setModalOpen(true);
   };
@@ -127,20 +143,28 @@ export default function Main() {
           <h2><b style={{color: 'var(--text-color)'}}>About</b> Me</h2>
         </div>
         <div className="section--content">
-          <p style={{fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--text-color)'}}>Hi, I'm Shrikant</p>
-          <p>
-            I'm a B.Tech Computer Science student at Sanjivani University, passionate about technology and innovation. I specialize in frontend development
-            <span style={{color: 'var(--blueviolet-color)'}}> (HTML, CSS, JavaScript, ReactJS), </span>
-            have experience with backend
-            <span style={{color: 'var(--blueviolet-color)'}}> (Node.js, Java, Dart), </span>
-            and am expanding into mobile app development
-            <span style={{color: 'var(--blueviolet-color)'}}> (Android Studio, Flutter). </span>
-            I also enjoy exploring machine learning and training models to solve real-world problems.
-            <span style={{color: 'var(--blueviolet-color)'}}> (Machine Learning, Data Science, Python, TensorFlow, PyTorch) </span>
-          </p>
-          <p>
-            Feel free to explore my work, and don’t hesitate to connect if you’re interested in collaborating on exciting opportunities!
-          </p>
+          {loadingAbout ? (
+            <p style={{ color: 'var(--subtitle-color)' }}>Loading profile…</p>
+          ) : (
+            <>
+              <p style={{fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--text-color)'}}>Hi, I'm Shrikant</p>
+              <p>{about?.description}</p>
+              {(about?.skills?.title || about?.skills?.subtitle) && (
+                <p>
+                  <span style={{color: 'var(--blueviolet-color)'}}>{about?.skills?.title}</span>
+                  {about?.skills?.subtitle ? (
+                    <span> — {about.skills.subtitle}</span>
+                  ) : null}
+                </p>
+              )}
+              {about?.goals && (
+                <p><b>Goals:</b> {about.goals}</p>
+              )}
+              {about?.experience && (
+                <p><b>Experience:</b> {about.experience}</p>
+              )}
+            </>
+          )}
         </div>
       </div>
     </section>
@@ -152,16 +176,22 @@ export default function Main() {
       <p className="projects-subtitle">
         A selection of my work, showcasing my skills in design and development.
       </p>
-      <div className="projects-grid">
-        {projects.map((project, idx) => (
-          <ProjectCard
-            key={idx}
-            {...project}
-            onViewDetails={() => handleOpenModal(project)}
-          />
-        ))}
-      </div>
-      {/* <ProjectModal open={modalOpen} onClose={handleCloseModal} project={selectedProject} /> */}
+      {loadingProjects ? (
+        <p style={{ color: 'var(--subtitle-color)' }}>Loading projects…</p>
+      ) : projects.length === 0 ? (
+        <p style={{ color: 'var(--subtitle-color)' }}>No projects found.</p>
+      ) : (
+        <div className="projects-grid">
+          {projects.map((project, idx) => (
+            <ProjectCard
+              key={idx}
+              {...project}
+              onViewDetails={() => handleOpenModal(project)}
+            />
+          ))}
+        </div>
+      )}
+      <ProjectModal open={modalOpen} onClose={handleCloseModal} project={selectedProject} />
     </section>
   );
 
@@ -173,36 +203,40 @@ export default function Main() {
     My professional experience and growth in the tech industry. 
   </p>
   <div className="timeline-container">
-    <div className="experience-card">
-      <div className="company">
-        <span role="img" aria-label="briefcase">💼</span> Chung chang University - Taiwan
-      </div>
-      <div className="role">Research Intern</div>
-      <div className="meta">
-        <span>📅 Apri 2025 - Ongoing</span>
-        <span>🌐 Remote</span>
-      </div>
-      <div className="description">
-      Conducting hyperspectral image analysis for cancer detection using pattern recognition.
-      Identifying anomalies in medical datasets to improve diagnostic precision.
-      
-      </div>
-      <a className="details-btn" href="#"><ShinyText text="View Details ↗" disabled={false} speed={3} className='custom-class' /></a>
-    </div>
-    <div className="experience-card">
-      <div className="company">
-        <span role="img" aria-label="briefcase">💼</span> Thought bliss Solution - Pune
-      </div>
-      <div className="role">Python Developer Intern</div>
-      <div className="meta">
-        <span>📅 Jun 2022 - Aug 2022</span>
-        <span>🌐 Remote</span>
-      </div>
-      <div className="description">
-      Developed automation scripts and data processing tools using Python, and worked closely with senior developers to deliver high-quality solutions for real-world business problems.
-      </div>
-      <a className="details-btn" href="#"><ShinyText text="View Details ↗" disabled={false} speed={3} className='custom-class' /></a>
-    </div>
+          {loadingInternships ? (
+            <p style={{ color: 'var(--subtitle-color)' }}>Loading experience…</p>
+          ) : internships.length === 0 ? (
+            <p style={{ color: 'var(--subtitle-color)' }}>No experience added yet.</p>
+          ) : (
+            internships.map((it, idx) => (
+              <div className="experience-card" key={idx}>
+                {/* Row 1: Title (Company) */}
+                <div className="exp-row exp-title">
+                  <span className="company"><FiBriefcase className="icon" /> {it.company}</span>
+                </div>
+                {/* Row 2: Location (single column) */}
+                {it.location ? (
+                  <div className="exp-row exp-location">
+                    <span><FiGlobe className="icon" /> {it.location}</span>
+                  </div>
+                ) : null}
+                {/* Row 3: Duration/Date (single column) */}
+                {(it.duration || it.start || it.end) ? (
+                  <div className="exp-row exp-duration">
+                    <span><FiCalendar className="icon" /> {it.duration ? it.duration : `${it.start}${it.end ? ` - ${it.end}` : ''}`}</span>
+                  </div>
+                ) : null}
+                {/* Row 4: Position */}
+                <div className="exp-row exp-position">
+                  <div className="role">{it.role}</div>
+                </div>
+                {/* Row 5: Description */}
+                {it.description && String(it.description).trim().toLowerCase() !== String(it.role || '').trim().toLowerCase() ? (
+                  <div className="exp-row description">{it.description}</div>
+                ) : null}
+              </div>
+            ))
+    )}
   </div>
 </section>
   );
@@ -217,51 +251,34 @@ export default function Main() {
           My academic journey and qualifications.
         </p>
         <div className="education-cards">
-          <div className="education-card">
-            <div className="education-icon">
-              <span role="img" aria-label="graduation cap">🎓</span>
-            </div>
-            <div className="education-content">
-              <h3 className="institution">Sanjivani University</h3>
-              <p className="qualification">Bachelor of Technology in Computer Science</p>
-              <div className="education-grade">
-               
-                
+          {loadingEducation ? (
+            <p style={{ color: 'var(--subtitle-color)' }}>Loading education…</p>
+          ) : education.length === 0 ? (
+            <p style={{ color: 'var(--subtitle-color)' }}>No education added yet.</p>
+          ) : (
+            education.map((e, idx) => (
+              <div className="education-card" key={idx}>
+                <div className="education-icon">
+                  <Icons.FiAward className="icon" />
+                </div>
+                <div className="education-content">
+                  <h3 className="institution">{e.institution}</h3>
+                  <p className="qualification">{e.qualification}</p>
+                  <div className="education-separator"></div>
+                  <div className="education-dates">
+                    <div className="edu-left">
+                      <Icons.FiCalendar className="icon" />
+                      <span>{e.start}{e.end ? ` - ${e.end}` : ''}</span>
+                    </div>
+                    <div className="edu-right">
+                      <span className="grade-label">{e.gradeLabel}:</span>
+                      <span className="grade-value">{e.grade}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="education-separator"></div>
-              <div className="education-dates">
-                <div className="edu-left"><span role="img" aria-label="calendar">📅</span>
-                <span> 2024 - 2027</span></div>
-                <div className="edu-right">
-                <span className="grade-label">Grade: </span>
-                <span className="grade-value"> A+ </span>
-                <span className="percentage"> (8.2 CGPA) </span> </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="education-card">
-            <div className="education-icon">
-            <span role="img" aria-label="graduation cap">🎓</span>
-            </div>
-            <div className="education-content">
-              <h3 className="institution">Gautam Polytechnic and Institute </h3>
-              <p className="qualification">Diploma in Computer Engineering</p>
-              <div className="education-grade">
-                
-
-              </div>
-              <div className="education-separator"></div>
-              <div className="education-dates">
-                <div className="edu-left"><span role="img" aria-label="calendar">📅</span>
-                <span> 2021 - 2024</span></div>
-                <div className="edu-right">
-                <span className="grade-label">Percentage: </span>
-                <span className="grade-value"> A </span> 
-                <span className="percentage"> (78%) </span> </div>
-              </div>
-            </div>
-          </div>
+            ))
+          )}
         </div>
       </div>
     </section>
@@ -277,20 +294,48 @@ export default function Main() {
           Recognitions of my skills and dedication to continuous learning.
         </p>
         <div className="certifications-grid">
-          {certifications.map((cert, idx) => (
-            <div className="certification-card" key={idx}>
-              <div className="certification-image">
-                <img src={cert.image} alt={cert.alt} style={{width: "100%", borderRadius: "8px"}} />
-              </div>
-              <div className="certification-content">
-                <h3 className="certification-title">{cert.title}</h3>
-                <p className="certification-provider">{cert.provider}</p>
-                <div className="certification-date">
-                  <span role="img" aria-label="calendar">📅</span> {cert.date}
+          {loadingCertifications ? (
+            <p style={{ color: 'var(--subtitle-color)' }}>Loading certifications…</p>
+          ) : certifications.length === 0 ? (
+            <p style={{ color: 'var(--subtitle-color)' }}>No certifications added yet.</p>
+          ) : (
+            certifications.map((cert, idx) => (
+              <div className="certification-card" key={idx}>
+                <div className="certification-content">
+                  <div className="certification-header">
+                  <FiAward  size={20} style={{color: 'var(--primary-color)',marginBottom: '10px'}} />
+                    <div className="certification-head-left">
+                      
+                      <h3 className="certification-title">{cert.title}</h3>
+                      {cert.provider ? (
+                        <p className="certification-provider">{cert.provider}</p>
+                      ) : null}
+                    </div>
+                  </div>
+                  {cert.date ? (
+                    <div className="certification-meta">
+                      <FiCalendar className="icon" />
+                      <span>{cert.date}</span>
+                    </div>
+                  ) : null}
+                  {cert.verifyUrl ? (
+                    <div className="certification-actions">
+                      <a
+                        href={cert.verifyUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="verify-btn"
+                        title="Verify Certificate"
+                      >
+                        <FiExternalLink />
+                        <span>Verify</span>
+                      </a>
+                    </div>
+                  ) : null}
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </section>
@@ -361,7 +406,7 @@ export default function Main() {
           </div>
           <div className='contact-btn-container'>
           <button type="submit" className="contact-btn" onClick={handleSubmit} style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem'}}>
-            Send Message <Icons.SendFill />
+            Send Message <FiSend />
           </button>
           </div>
         </form>

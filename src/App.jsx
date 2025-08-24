@@ -32,7 +32,7 @@ function App() {
               <div className="hero-buttons">
               
               <button className='download-btnl' onClick={() => {
-                window.open('https://drive.google.com/file/d/1-0000000000000000000000000000000000000000/view?usp=sharing', '_blank');
+                window.open('https://drive.google.com/drive/folders/15XtNNYMIyCpgjRth769IV9PZAuRZYU4f?usp=sharing', '_blank');
               }}>Download CV</button>
               
               <button className="contact-btnl" onClick={() => {
