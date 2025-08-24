@@ -78,6 +78,7 @@
     /* Shimmer variables */
     --shimmer-base: rgba(255, 255, 255, 0.18);
     --shimmer-highlight: rgba(210, 210, 210, 0.38);
+    --footer-top-color: #474747;
 }
 .Dark-theme{
   --primary-color: #ff4c4c;
@@ -138,6 +139,7 @@
   /* Shimmer variables */
   --shimmer-base: rgba(255, 255, 255, 0.20);
   --shimmer-highlight: rgba(255, 255, 255, 0.32);
+  --footer-top-color: #404040;
 }
 *,body{
     margin: 0;
