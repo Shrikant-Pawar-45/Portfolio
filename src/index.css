@@ -133,11 +133,11 @@
   --contact-form-border-color:rgba(0, 0, 0, 0.16) 0px 1px 4px;
   --hamburger-color: #fff; /* white for dark theme */
 }
-*{
+*,body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif; /* Apply Poppins font */
+    font-family: 'Inter', sans-serif;
 }
 html {
   scroll-behavior: smooth;
