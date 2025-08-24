@@ -1,0 +1,60 @@
+/* GoToTop.css */
+.go-to-top {
+  position: fixed;
+  bottom: clamp(16px, 5vh, 6rem);
+  right: clamp(12px, 4vw, 2rem);
+  z-index: 100;
+}
+
+.top-btn {
+  background-color: #ffffff00;
+  color: var(--primary-color);
+  border: none;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s, transform 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.top-btn:hover {
+  background: var(--primary-color); /* A slightly lighter shade for hover */
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* Respect device safe areas and tighten layout on small screens */
+@supports (bottom: env(safe-area-inset-bottom)) {
+  .go-to-top { bottom: calc(1rem + env(safe-area-inset-bottom)); }
+}
+
+@media (max-width: 768px) {
+  .go-to-top { right: 1rem; }
+  .top-btn { width: 46px; height: 46px; font-size: 1.35rem; }
+}
+
+@media (max-width: 480px) {
+  .go-to-top { right: 0.875rem; bottom: calc(0.875rem + env(safe-area-inset-bottom, 0px)); }
+  .top-btn { width: 44px; height: 44px; font-size: 1.25rem; box-shadow: 0 3px 10px rgba(0,0,0,.18); }
+}
+
+/* NProgress custom styles */
+#nprogress .bar {
+  background: var(--primary-color) !important;
+  height: 3px !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px var(--primary-color), 0 0 5px var(--primary-color) !important;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: var(--primary-color) !important;
+  border-left-color: var(--primary-color) !important;
+}

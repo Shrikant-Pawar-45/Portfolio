@@ -75,6 +75,9 @@
     --contact-form-shadow:rgba(0, 0, 0, 0.35) 0px 5px 15px;
     --contact-form-border-color:rgba(0, 0, 0, 0.16) 0px 1px 4px;
     --hamburger-color: #181818; /* dark for light theme */
+    /* Shimmer variables */
+    --shimmer-base: rgba(255, 255, 255, 0.18);
+    --shimmer-highlight: rgba(210, 210, 210, 0.38);
 }
 .Dark-theme{
   --primary-color: #ff4c4c;
@@ -132,6 +135,9 @@
   --contact-form-shadow:rgba(0, 0, 0, 0.35) 0px 5px 15px;
   --contact-form-border-color:rgba(0, 0, 0, 0.16) 0px 1px 4px;
   --hamburger-color: #fff; /* white for dark theme */
+  /* Shimmer variables */
+  --shimmer-base: rgba(255, 255, 255, 0.20);
+  --shimmer-highlight: rgba(255, 255, 255, 0.32);
 }
 *,body{
     margin: 0;

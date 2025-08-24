@@ -1,0 +1,98 @@
+.shimmer-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(16px, 4vw, 40px);
+  width: 100%;
+  height: 100%;
+}
+
+.shimmer-hero-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.shimmer-line {
+  position: relative;
+  overflow: hidden;
+  background: var(--shimmer-base);
+  box-shadow: var(--box-shadow);
+  border-radius: 8px;
+}
+
+/* Shimmer effect for each line inside the text card */
+.shimmer-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  height: 100%;
+  width: 150%;
+  background: linear-gradient(90deg, rgba(0,0,0,0) 0%, var(--shimmer-highlight) 50%, rgba(0,0,0,0) 100%);
+  transform: skewX(-25deg);
+  animation: shimmer-move 1.6s infinite;
+}
+
+.shimmer-line.small { height: 16px; width: 140px; }
+.shimmer-line.title { height: 48px; width: 60%; }
+.shimmer-line.subtitle { height: 22px; width: 50%; }
+.shimmer-line.btn { height: 44px; width: 160px; border-radius: 10px; display: inline-block; }
+
+.shimmer-row { display: flex; gap: 14px; }
+
+.shimmer-hero-right { flex: 1; display: flex; align-items: center; justify-content: center; }
+
+.shimmer-block {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  height: 240px;
+  border-radius: 16px;
+  /* background: var(--shimmer-base); */
+  /* box-shadow: var(--box-shadow); */
+  overflow: hidden; /* keep shine inside card */
+}
+
+/* Inner container to position lines like text content */
+.shimmer-block-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  height: 100%;
+  justify-content: center;
+}
+
+.shimmer-avatar {
+  position: relative;
+  width: clamp(200px, 28vw, 320px);
+  height: clamp(200px, 28vw, 320px);
+  border-radius: 50%;
+  background: var(--shimmer-base);
+  box-shadow: var(--box-shadow);
+  overflow: hidden; /* keep shine inside circle */
+}
+
+/* Shimmer effect only inside card elements */
+.shimmer-avatar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  height: 100%;
+  width: 150%;
+  background: linear-gradient(90deg, rgba(0,0,0,0) 0%, var(--shimmer-highlight) 50%, rgba(0,0,0,0) 100%);
+  transform: skewX(-25deg);
+  animation: shimmer-move 1.6s infinite;
+}
+
+@keyframes shimmer-move {
+  100% { left: 150%; }
+}
+
+@media (max-width: 770px) {
+  .shimmer-hero { flex-direction: column; text-align: center; }
+  .shimmer-hero-left { align-items: center; }
+}
