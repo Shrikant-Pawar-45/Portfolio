@@ -60,8 +60,8 @@ function App() {
               {!loading && !error && profileData && contactData && (
                 <div className="hero-content">
                   <div className="hero-left">
-                    {/** Temporary defensive fix: correct common role misspelling until Firestore is updated */}
-                    {(() => { profileData.role = (profileData.role || '').replace(/soffwaer/ig, 'Software').trim(); return null; })()}
+                    {/** Temporary defensive fix: correct common role misspelling until DB is updated */}
+                    {(() => null)()}
                     <motion.span
                       className="hero-greeting"
                       initial={{ opacity: 0, y: 20 }}
@@ -84,7 +84,12 @@ function App() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
                     >
-                      <ShinyText text={profileData.role} disabled={false} speed={3} className='custom-class' />
+                      {(() => {
+                        const displayRole = String(profileData.role || '')
+                          .replace(/soffwaer/ig, 'Software')
+                          .trim();
+                        return <ShinyText text={displayRole} disabled={false} speed={3} className='custom-class' />;
+                      })()}
                     </motion.h2>
                     <motion.div
                       className="hero-buttons"
@@ -105,8 +110,8 @@ function App() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
                     >
-                      <a href={contactData.githubUrl} target='_blank' rel="noopener noreferrer"><Icon.Github style={{color: 'var(--black-white-color)', fontSize: '20px',cursor: 'pointer'}}/></a>
-                      <a href={contactData.linkedinUrl} target='_blank' rel="noopener noreferrer"><Icon.Linkedin style={{color: 'var(--black-white-color)', fontSize: '20px',cursor: 'pointer'}}/></a>
+                      <a href={contactData.github} target='_blank' rel="noopener noreferrer"><Icon.Github style={{color: 'var(--black-white-color)', fontSize: '20px',cursor: 'pointer'}}/></a>
+                      <a href={contactData.linkedin} target='_blank' rel="noopener noreferrer"><Icon.Linkedin style={{color: 'var(--black-white-color)', fontSize: '20px',cursor: 'pointer'}}/></a>
                     </motion.div>
                   </div>
                   <div className="hero-right">

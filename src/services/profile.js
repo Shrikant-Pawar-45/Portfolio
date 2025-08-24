@@ -1,14 +1,28 @@
-// Firestore: Profile_Details
-import { collection, getDocs, limit, query } from 'firebase/firestore';
-import { db } from './firebase';
+// Realtime Database: Profile_Details
+const RTDB_BASE = 'https://portfolio-admin-5648b-default-rtdb.firebaseio.com/';
+
+async function fetchJSON(path) {
+  const url = `${RTDB_BASE}${path}.json`;
+  const res = await fetch(url, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`RTDB request failed: ${res.status}`);
+  return res.json();
+}
 
 export async function fetchProfile() {
-  if (!db) return defaults();
-  const col = collection(db, 'Profile_Details');
-  const snap = await getDocs(query(col, limit(1)));
-  if (snap.empty) return defaults();
-  const doc = snap.docs[0].data() || {};
-  return normalize(doc);
+  try {
+    const data = await fetchJSON('Profile_Details');
+    let doc = {};
+    if (Array.isArray(data)) {
+      doc = data.find(Boolean) || {};
+    } else if (data && typeof data === 'object') {
+      const k = Object.keys(data)[0];
+      doc = k ? (data[k] || {}) : {};
+    }
+    return normalize(doc);
+  } catch (e) {
+    console.error('[fetchProfile] RTDB error:', e);
+    return defaults();
+  }
 }
 
 function normalize(p) {

@@ -33,8 +33,8 @@ function normalize(p) {
     city: p.city || '',
     state: p.state || '',
     country: p.country || '',
-    linkedin: p.linkedinUrl || '',
-    github: p.githubUrl || '',
-    website: p.websiteUrl || ''
+    linkedin: p.linkedin || '',
+    github: p.github || '',
+    website: p.website || ''
   };
 }
