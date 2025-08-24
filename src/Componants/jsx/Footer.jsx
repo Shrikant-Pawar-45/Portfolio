@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/Footer.css';
-import { Github, Linkedin, EnvelopeFill, PersonFill } from 'react-bootstrap-icons';
+import { Github, Linkedin, PersonFill } from 'react-bootstrap-icons';
 
 const Footer = () => {
   const handleNavClick = (e, targetId) => {
