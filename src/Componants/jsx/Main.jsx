@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import emailjs from "@emailjs/browser";
 import ClickSpark from '../../../ClickSpark/ClickSpark.jsx';
 import ShinyText from '../../../ClickSpark/ShinyText/ShinyText.jsx';
 import { FiSend, FiBriefcase, FiCalendar, FiGlobe, FiAward, FiExternalLink } from 'react-icons/fi';
@@ -102,9 +103,7 @@ export default function Main() {
     { image: 'https://i.postimg.cc/J7XBfWGp/mongodb.png', name: 'MongoDB', alt: 'MongoDB' },
     { image: 'https://i.postimg.cc/RVzn9bt4/mysql.png', name: 'MySQL', alt: 'MySQL' }
   ];
-  // certifications will be fetched; keep UI-compatible shape
   const handleOpenModal = (project) => {
-    // Debug: inspect fetched project fields
     try {
       console.log('[Project View] Selected project:', project);
       console.log('[Project View] Fields ->', {
@@ -120,7 +119,6 @@ export default function Main() {
         end: project?.end,
         link: project?.link,
       });
-      // Expose globally for easy copy/paste: run `copy(JSON.stringify(window.__lastProject, null, 2))`
       if (typeof window !== 'undefined') window.__lastProject = project;
     } catch (_) {}
     setSelectedProject(project);
@@ -131,10 +129,7 @@ export default function Main() {
     setModalOpen(false);
     setSelectedProject(null);
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted');
-  };
+  
 
   const About = () => (
     <section id="About" className='about-section'>
@@ -210,27 +205,27 @@ export default function Main() {
           ) : (
             internships.map((it, idx) => (
               <div className="experience-card" key={idx}>
-                {/* Row 1: Title (Company) */}
+            
                 <div className="exp-row exp-title">
                   <span className="company"><FiBriefcase className="icon" /> {it.company}</span>
                 </div>
-                {/* Row 2: Location (single column) */}
+               
                 {it.location ? (
                   <div className="exp-row exp-location">
                     <span><FiGlobe className="icon" /> {it.location}</span>
                   </div>
                 ) : null}
-                {/* Row 3: Duration/Date (single column) */}
+             
                 {(it.duration || it.start || it.end) ? (
                   <div className="exp-row exp-duration">
                     <span><FiCalendar className="icon" /> {it.duration ? it.duration : `${it.start}${it.end ? ` - ${it.end}` : ''}`}</span>
                   </div>
                 ) : null}
-                {/* Row 4: Position */}
+              
                 <div className="exp-row exp-position">
                   <div className="role">{it.role}</div>
                 </div>
-                {/* Row 5: Description */}
+      
                 {it.description && String(it.description).trim().toLowerCase() !== String(it.role || '').trim().toLowerCase() ? (
                   <div className="exp-row description">{it.description}</div>
                 ) : null}
@@ -377,42 +372,81 @@ export default function Main() {
     </section>
   );
 
-  const Contact = () => (
-    <section id="Contact" className="contact-section">
-      <div className="section--container">
-        <div className="section--tittle">
-          <h2>
-            <b style={{ color: 'var(--text-color)' }}>Get In</b>
-            <span style={{ color: 'var(--primary-color)' }}> Touch</span>
-          </h2>
+  const Contact = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+    const handleSubmit = (e) => {
+      const ServiceID = "service_vpm6alv";
+      const TemplateID = "template_d7rdfvv";
+      const PublicKey = "LqccQRoXqimL5q6Dy";
+      e.preventDefault();
+      console.log('Form submitted');
+      const templateParams = {
+        from_name: name,
+        from_email: email,
+        time: new Date().toISOString(),
+        form_to: "Shrikant Pawar",
+        message: message,
+      };
+      
+      emailjs.send(ServiceID, TemplateID, templateParams, PublicKey)
+      .then(() => {
+        setName('');
+        setEmail('');
+        setMessage('');
+        console.log('Email sent successfully');
+      })
+      .catch((err) => {
+        console.error('Error sending email:', err);
+      });
+    };
+
+    return (
+      <section id="Contact" className="contact-section">
+        <div className="section--container">
+          <div className="section--tittle">
+            <h2>
+              <b style={{ color: 'var(--text-color)' }}>Get In</b>
+              <span style={{ color: 'var(--primary-color)' }}> Touch</span>
+            </h2>
+          </div>
+          <p className="contact-subtitle">
+            I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team.
+          </p>
+          <form
+            className="contact-form"
+            onSubmit={handleSubmit}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+                e.preventDefault();
+              }
+            }}
+          >
+            <div className="contact-row">
+              <div className="contact-field">
+                <label htmlFor="name">Name</label>
+                <input type="text" id="name" name="name" autoComplete="off" onChange={(e)=>setName(e.target.value)} value={name} required />
+              </div>
+              <div className="contact-field">
+                <label htmlFor="email">Email</label>
+                <input type="email" id="email" name="email" autoComplete="off" onChange={(e) => setEmail(e.target.value)} value={email} required />
+              </div>
+            </div>
+            <div className="contact-field">
+              <label htmlFor="message">Message</label>
+              <textarea id="message" name="message" rows={4} onChange={(e) => setMessage(e.target.value)} value={message} required />
+            </div>
+            <div className='contact-btn-container'>
+            <button type="submit" className="contact-btn" style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem'}}>
+              Send Message <FiSend />
+            </button>
+            </div>
+          </form>
         </div>
-        <p className="contact-subtitle">
-          I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team.
-        </p>
-        <form className="contact-form">
-          <div className="contact-row">
-            <div className="contact-field">
-              <label htmlFor="name">Name</label>
-              <input type="text" id="name" name="name" autoComplete="off" required />
-            </div>
-            <div className="contact-field">
-              <label htmlFor="email">Email</label>
-              <input type="email" id="email" name="email" autoComplete="off" required />
-            </div>
-          </div>
-          <div className="contact-field">
-            <label htmlFor="message">Message</label>
-            <textarea id="message" name="message" rows={4} required />
-          </div>
-          <div className='contact-btn-container'>
-          <button type="submit" className="contact-btn" onClick={handleSubmit} style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem'}}>
-            Send Message <FiSend />
-          </button>
-          </div>
-        </form>
-      </div>
-    </section>
-  );
+      </section>
+    );
+  };
 
   return (
       <ClickSpark

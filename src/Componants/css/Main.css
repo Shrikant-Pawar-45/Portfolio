@@ -22,7 +22,7 @@ body.modal-open {
 :root{
   /* Global font sizing scale */
   --font-size-h1: 1.2rem;            /* prominent titles */
-  --font-size-heading: 1.5rem;       /* section headings */
+  --font-size-heading: 1.7rem;       /* section headings */
   --font-size-h2: 1.05rem;           /* secondary headings */
   --font-size-card-title: 1rem;    /* card titles */
   --font-size-subtitle: 0.9rem;        /* subtitles/labels */
@@ -30,7 +30,7 @@ body.modal-open {
   --font-size-small: 0.8rem;         /* meta/smaller text */
 
   /* Mobile tweaks */
-  --font-size-heading-mobile: 1rem;
+  --font-size-heading-mobile: 1.5rem;
   --font-size-body-mobile: 0.7rem;
 }
 
@@ -1353,7 +1353,7 @@ section p{
 .contact-field textarea {
   width: 100%;
   padding: 0.5rem 1rem;
-  border-radius: 8px;
+  border-radius: 5px;
   border: 1px solid var(--border-color);
   background: var(--Card-Background-color);
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
@@ -1369,7 +1369,7 @@ section p{
 }
 
 .contact-btn {
-  background: var(--Card-Background-color);
+  background: var(--contact-form-btn-color);
   color: var(--text-color);
   border: none;
   width: 30%;
