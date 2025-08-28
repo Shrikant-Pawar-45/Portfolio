@@ -313,7 +313,7 @@ section p{
   background: var(--Card-Background-color);
   color: var(--text-color);
   border-radius: 12px;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(9px);
   box-shadow: var(--box-shadow);
   border: 1.5px solid var(--border-color);
   width: 90vw;
