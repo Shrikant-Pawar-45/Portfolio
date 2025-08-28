@@ -39,6 +39,38 @@ export default function ProjectModal({ open, onClose, project }) {
     : typeof skills === 'string' && skills.includes(',')
       ? skills.split(',').map((s) => s.trim()).filter(Boolean)
       : skills ? [String(skills)] : [];
+  const splitObjectiveString = (str) => {
+    if (!str) return [];
+    let list = str
+      .replace(/\r?\n/g, '\n')              // normalize newlines
+      .replace(/[;|•]/g, '\n')               // treat ; | • as separators
+      .replace(/([.!?])\s+/g, '$1\n')       // break sentences after . ! ?
+      .split('\n')
+      .map((s) => s.trim())
+      .filter(Boolean);
+    // Fallback splits when no sentence punctuation provided
+    if (list.length <= 1) {
+      const byComma = str.split(',').map((s) => s.trim()).filter(Boolean);
+      if (byComma.length > 1) {
+        list = byComma;
+      } else {
+        const byAnd = str.split(/\s+and\s+/i).map((s) => s.trim()).filter(Boolean);
+        if (byAnd.length > 1 && byAnd.every((p) => p.length >= 6)) {
+          list = byAnd;
+        }
+      }
+    }
+    return list;
+  };
+
+  let objectiveList = [];
+  if (Array.isArray(objective)) {
+    const arr = objective.filter(Boolean).map((o) => String(o).trim()).filter(Boolean);
+    objectiveList = arr.length === 1 ? splitObjectiveString(arr[0]) : arr;
+  } else if (typeof objective === 'string') {
+    objectiveList = splitObjectiveString(objective);
+  }
+  const objectiveInline = objectiveList.join(' | ');
 
   return (
     <div className="modal-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-label={title || 'Project details'}>
@@ -49,11 +81,23 @@ export default function ProjectModal({ open, onClose, project }) {
         {imgSrc ? (
           <img src={imgSrc} alt={title} className="modal-project-image" />
         ) : null}
-        <h3 style={{ color: 'var(--text-color)', marginBottom: '0.8rem' }}>{title}</h3>
+        <h4 style={{ color: 'var(--text-color)', marginBottom: '0.8rem' }}>{title}</h4>
         <p style={{ color: 'var(--text-color)' }}>{description || '—'}</p>
 
-        <div className="modal-inline-meta">
-          <div className="meta-item-inline"><b>Objective:</b> <span style={{ color: 'var(--text-color)',textAlign: 'justify' }}>{objective || 'Not specified'}</span></div>
+        <div className="meta-block objective-block" style={{ marginTop: '0.6rem', width: '100%' }}>
+          <div className="meta-label" style={{ textAlign: 'left', alignSelf: 'flex-start' }}><b>Objectives:</b></div>
+          {objectiveList.length > 1 ? (
+            <ul className="project-description" style={{ margin: 0, paddingLeft: '1.2rem', listStyle: 'disc', color: 'var(--text-color)' }}>
+              {objectiveList.map((o, i) => (
+                <li key={i} style={{ textAlign: 'justify' }}><span style={{ color: 'var(--text-color)' }}>{o}</span></li>
+              ))}
+            </ul>
+          ) : (
+            <p className="project-description" style={{ margin: 0, color: 'var(--text-color)', textAlign: 'justify' }}>{objectiveInline || 'Not specified'}</p>
+          )}
+        </div>
+
+        <div className="modal-inline-meta" style={{ marginTop: '1rem', width: '100%' }}>
           <div className="meta-item-inline"><b>Type:</b> <span style={{ color: 'var(--text-color)' }}>{type || 'Not specified'}</span></div>
           
           <div className="meta-item-inline" style={{ marginLeft: 'auto' }}><b>Status:</b> <span style={{ color: 'var(--text-color)',justifyContent: 'wrap' }}>{status || 'Not specified'}</span></div>

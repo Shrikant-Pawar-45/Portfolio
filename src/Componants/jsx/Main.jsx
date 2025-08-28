@@ -426,11 +426,11 @@ export default function Main() {
             <div className="contact-row">
               <div className="contact-field">
                 <label htmlFor="name">Name</label>
-                <input type="text" id="name" name="name" autoComplete="off" onChange={(e)=>setName(e.target.value)} value={name} required />
+                <input type="text" id="name" name="name" onChange={(e)=>setName(e.target.value)} value={name} required />
               </div>
               <div className="contact-field">
                 <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" autoComplete="off" onChange={(e) => setEmail(e.target.value)} value={email} required />
+                <input type="email" id="email" name="email" onChange={(e) => setEmail(e.target.value)} value={email} required />
               </div>
             </div>
             <div className="contact-field">
