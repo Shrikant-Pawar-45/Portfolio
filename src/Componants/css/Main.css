@@ -152,8 +152,11 @@ section p{
   background: var(--Card-Background-color);
   border-radius: 12px;
   box-shadow: var(--box-shadow);
-  padding: 1.5rem;
-  width: 340px;
+  padding: 1.2rem;
+  width: 100%;
+  max-width: 320px;                 /* keep card tidy */
+  flex: 1 1 320px;                   /* responsive sizing */
+  box-sizing: border-box;            /* prevent overflow from padding */
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* unify left alignment */
@@ -178,6 +181,8 @@ section p{
 
 .project-image {
   width: 100%;
+  aspect-ratio: 16/9;               /* prevent tall images */
+  object-fit: cover;
   border-radius: 8px;
   margin-bottom: 1.2rem;
   box-shadow: var(--card-Btn-shadow);
@@ -189,6 +194,7 @@ section p{
   margin-bottom: 0.5rem;
   text-align: left; /* unify */
   color: var(--text-color);
+  word-break: break-word;
 }
 
 .project-meta {
@@ -204,6 +210,7 @@ section p{
   font-size: var(--font-size-body);
   margin-bottom: 1.2rem;
   text-align: justify;
+  overflow-wrap: anywhere;           /* avoid overflow for long words */
 }
 
 .project-actions {
@@ -212,6 +219,15 @@ section p{
   justify-content: flex-start; /* unify */
   gap: 0.6rem;
   flex-wrap: wrap;
+  margin-top: auto;                 /* stick actions to bottom of card */
+}
+
+/* Project cards responsive tweaks */
+@media (max-width: 1024px) {
+  .project-card { max-width: 300px; flex-basis: 300px; }
+}
+@media (max-width: 640px) {
+  .project-card { max-width: 360px; flex-basis: 100%; padding: 1rem; }
 }
 
 .project-btn {
@@ -316,8 +332,8 @@ section p{
   backdrop-filter: blur(9px);
   box-shadow: var(--box-shadow);
   border: 1.5px solid var(--border-color);
-  width: 90vw;
-  max-width: 520px;
+  width: 92vw;
+  max-width: 680px;        /* wider on desktop */
   min-width: 320px;
   position: relative;
   text-align: left;
@@ -328,17 +344,20 @@ section p{
   align-items: center;
 }
 
+@media (max-width: 768px) {
+  .modal-content.project-modal { max-width: 95vw; }
+}
+
 /* Skills chips in modal */
 .skill-chips {
   display: flex;
-  flex-wrap: nowrap; /* single row */
-  gap: 0.4rem;
+  flex-wrap: wrap;     /* wrap to new lines to avoid overflow */
+  row-gap: 0.4rem;
+  column-gap: 0.4rem;
   width: 100%;
-  overflow-x: auto; /* allow horizontal scroll */
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  min-height: 32px; /* keep space so it doesn't collapse */
-  padding-bottom: 4px; /* easier thumb scroll */
+  overflow-x: visible;
+  min-height: 32px;
+  padding-bottom: 4px;
 }
 
 .skill-chip {
@@ -403,6 +422,18 @@ section p{
 .skill-chips.inline {
   flex: 0 1 auto;
   max-width: 100%;
+  flex-wrap: wrap;     /* ensure inline version also wraps */
+}
+
+/* On very small screens prefer a single-row scroll to save space */
+@media (max-width: 480px) {
+  .skill-chips,
+  .skill-chips.inline {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
 }
 .experience-section {
   justify-content: flex-start;
@@ -435,9 +466,10 @@ section p{
 .timeline-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: stretch;      /* allow equal-height rows */
   position: relative;
   margin-top: 2rem;
+  flex-wrap: wrap;           /* wrap cards to new rows */
 }
 
 .experience-header {
@@ -517,6 +549,7 @@ section p{
   box-shadow: var(--Card-Background-shadow);
   border: 1.5px solid var(--border-color);
   transition: box-shadow 0.2s, border-color 0.2s;
+  min-height: 260px;           /* consistent card height */
 }
 
 .experience-card:hover {
@@ -943,6 +976,7 @@ section p{
   display: flex;              /* normalize layout */
   flex-direction: column;
   align-items: stretch;
+  min-height: 180px;          /* stabilize content height */
 }
 
 /* Force left alignment for all non-title content inside certification card */
@@ -958,16 +992,15 @@ section p{
   font-weight: 700;
   margin-bottom: 0.5rem;
   color: var(--text-color);
-  text-align: center;         /* center only the certification title */
+  text-align: left;         
   display: block;
   width: 100%;
 }
 
-/* Stronger centering to override any inherited left-align from parents */
-.certification-head-left .certification-title {
-  text-align: center !important;
-  display: flex;
-  justify-content: center;
+/* Ensure consistent left alignment across all cards */
+.certification-title {
+  text-align: left;
+  display: block;
   width: 100%;
 }
 
@@ -1031,7 +1064,7 @@ section p{
 }
 
 .certification-actions {
-  margin-top: 1rem;
+  margin-top: auto;            /* pin actions to bottom */
   display: flex;
   justify-content: flex-start; /* keep actions left */
 }

@@ -290,22 +290,22 @@ export default function Main() {
         </p>
         <div className="certifications-grid">
           {loadingCertifications ? (
-            <p style={{ color: 'var(--subtitle-color)' }}>Loading certifications…</p>
+            <p style={{ color: 'var(--subtitle-color)' ,textAlign: 'center'}}>Loading certifications…</p>
           ) : certifications.length === 0 ? (
-            <p style={{ color: 'var(--subtitle-color)' }}>No certifications added yet.</p>
+            <p style={{ color: 'var(--subtitle-color)' ,textAlign: 'center'}}>No certifications added yet.</p>
           ) : (
             certifications.map((cert, idx) => (
               <div className="certification-card" key={idx}>
                 <div className="certification-content">
                   <div className="certification-header">
                   <FiAward  size={20} style={{color: 'var(--primary-color)',marginBottom: '10px'}} />
-                    <div className="certification-head-left">
+                    
                       
                       <h3 className="certification-title">{cert.title}</h3>
                       {cert.provider ? (
                         <p className="certification-provider">{cert.provider}</p>
                       ) : null}
-                    </div>
+                    
                   </div>
                   {cert.date ? (
                     <div className="certification-meta">
